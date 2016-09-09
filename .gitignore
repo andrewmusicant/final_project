@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+__pycache__
+.direnv
+.envrc
+.DS_Store
+.direnv
+.envrc
+*.pyc
+__pycache__
