@@ -18,8 +18,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'slack_app.apps.SlackAppConfig',
-    'rest_framework',
+    'lending_app.apps.LendingAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'slack_project.urls'
+ROOT_URLCONF = 'lending_project.urls'
 
 TEMPLATES = [
     {
@@ -56,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'slack_project.wsgi.application'
+WSGI_APPLICATION = 'lending_project.wsgi.application'
 
 
 DATABASES = {
