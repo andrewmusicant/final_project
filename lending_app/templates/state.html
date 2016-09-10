@@ -1,5 +1,16 @@
-<ul>
-{% for bank in banks %}
-  <li>{{ bank.name }}</li>
-{% endfor %}
-</ul>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>RoE</th>
+    <th>Micro Loans</th>
+    <th>Small Business Loans</th>
+  </tr>
+  {% for bank in banks %}
+    <tr>
+      <td>{{ bank.name }}</td>
+      <td>{{ bank.return_on_equity }}</td>
+      <td>{{ bank.total_amount_micro }}</td>
+      <td>{{ bank.total_amount_small }}</td>
+    </tr>
+  {% endfor %}
+</table>

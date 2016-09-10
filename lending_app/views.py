@@ -14,7 +14,7 @@ def index(request):
 def state(request, pk):
     pk = int(pk)
     state = State.objects.get(pk=pk)
-    banks = Bank.objects.filter(state=state)
+    banks = Bank.objects.filter(state=state).order_by('-return_on_equity')
     context = {
         'banks': banks
     }

@@ -22,6 +22,7 @@ def import_data(apps, schema_editor):
             total_assets = row[6]
             total_liability = row[7]
             net_income = row[8]
+            return_on_equity = int(net_income) / (int(total_assets) + int(total_liability))
             total_amount_small = row[9]
             total_num_loans_small = row[10]
             total_amount_micro = row[11]
@@ -31,6 +32,7 @@ def import_data(apps, schema_editor):
             b = Bank(state=s[0], name=name, location=location,
                      net_income=net_income, total_assets=total_assets,
                      total_liability=total_liability,
+                     return_on_equity=return_on_equity,
                      total_num_loans_small=total_num_loans_small,
                      total_num_loans_micro=total_num_loans_micro,
                      total_amount_small=total_amount_small,
