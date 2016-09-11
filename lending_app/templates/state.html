@@ -18,65 +18,27 @@ function drawTable() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Name');
   data.addColumn('number', 'Micro Loan');
-  data.addColumn('boolean', 'Full Time Employee');
   data.addColumn('number', 'Small Business Loans');
   data.addColumn('number', 'ROE');
   data.addRows([
-    ['Mike', {
-      v: 10000,
-      f: '$10,000'
-  }, true, {
-    v: 10000,
-    f: '$10,000'
-}, 0.016],
-    ['Jim', {
-      v: 8000,
-      f: '$8,000'
-  }, false,  {
-    v: 10000,
-    f: '$10,000'
-}, 0.016],
-    ['Alice', {
-      v: 12500,
-      f: '$12,500'
-  }, true,  {
-    v: 10000,
-    f: '$10,000'
-}, 0.016],
-    ['Bob', {
-      v: 7000,
-      f: '$7,000'
-  }, true, {
-    v: 10000,
-    f: '$10,000'
-}, 0.016]
-  ]);
 
+      {% for bank in banks %}
+
+          ['{{ bank.name }}',
+          {{ bank.total_amount_micro }},
+          {{ bank.total_amount_small }},
+          {{ bank.return_on_equity }}],
+      {% endfor %}
+]);
   var table = new google.visualization.Table(document.getElementById('table_div'));
 
   table.draw(data, {
     showRowNumber: true,
-    width: '100%',
+    width: '65%',
     height: '100%'
   });
 }
 
 
 </script>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>RoE</th>
-    <th>Micro Loans</th>
-    <th>Small Business Loans</th>
-  </tr>
-  {% for bank in banks %}
-    <tr>
-      <td>{{ bank.name }}</td>
-      <td>{{ bank.return_on_equity }}</td>
-      <td>{{ bank.total_amount_micro }}</td>
-      <td>{{ bank.total_amount_small }}</td>
-    </tr>
-  {% endfor %}
-</table>
 {% endblock %}
