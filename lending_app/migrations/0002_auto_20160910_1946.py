@@ -9,34 +9,118 @@ import os
 
 
 def import_data(apps, schema_editor):
-    filename = os.path.abspath('north_carolina_banks.csv')
+    filename = os.path.abspath('bank_data.csv')
     Bank = apps.get_model("lending_app", "Bank")
     State = apps.get_model("lending_app", "State")
+
+    states = {
+        "AK": "Alaska",
+        "AL": "Alabama",
+        "AR": "Arkansas",
+        "AS": "American Samoa",
+        "AZ": "Arizona",
+        "CA": "California",
+        "CO": "Colorado",
+        "CT": "Connecticut",
+        "DC": "District of Columbia",
+        "DE": "Delaware",
+        "FL": "Florida",
+        "GA": "Georgia",
+        "GU": "Guam",
+        "HI": "Hawaii",
+        "IA": "Iowa",
+        "ID": "Idaho",
+        "IL": "Illinois",
+        "IN": "Indiana",
+        "KS": "Kansas",
+        "KY": "Kentucky",
+        "LA": "Louisiana",
+        "MA": "Massachusetts",
+        "MD": "Maryland",
+        "ME": "Maine",
+        "MI": "Michigan",
+        "MN": "Minnesota",
+        "MO": "Missouri",
+        "MS": "Mississippi",
+        "MT": "Montana",
+        "NC": "North Carolina",
+        "ND": "North Dakota",
+        "NE": "Nebraska",
+        "NH": "New Hampshire",
+        "NJ": "New Jersey",
+        "NM": "New Mexico",
+        "NV": "Nevada",
+        "NY": "New York",
+        "OH": "Ohio",
+        "OK": "Oklahoma",
+        "OR": "Oregon",
+        "PA": "Pennsylvania",
+        "PR": "Puerto Rico",
+        "RI": "Rhode Island",
+        "SC": "South Carolina",
+        "SD": "South Dakota",
+        "TN": "Tennessee",
+        "TX": "Texas",
+        "UT": "Utah",
+        "VA": "Virginia",
+        "VI": "Virgin Islands",
+        "VT": "Vermont",
+        "WA": "Washington",
+        "WI": "Wisconsin",
+        "WV": "West Virginia",
+        "WY": "Wyoming"
+    }
+
     with open(filename) as f:
         f.seek(0)
         reader = csv.reader(f, delimiter=",")
         next(reader)
         for row in reader:
             name = row[0]
-            location = row[1] + ", " + row[2] + ", " + row[3]
+            location = row[1] + ", " + row[2] + ", " + row[3]  # city, state, zipcode
             total_assets = row[6]
             total_liability = row[7]
             net_income = row[8]
+            if total_assets == '' or total_liability == '' or net_income == '':
+                print(name)
             return_on_equity = int(net_income) / (int(total_assets) + int(total_liability))
-            total_amount_small = row[9]
-            total_num_loans_small = row[10]
+            total_loans = row[9]
+            total_amount_individual = row[10]
             total_amount_micro = row[11]
-            total_num_loans_micro = row[12]
+            total_amount_small = row[12]
+
+            total_num_loans_micro = row[13]
+            total_num_loans_small = row[14]
+            total_amount_farm = row[15]
+            total_num_loans_farm = row[16]
+
+            if int(total_loans) == 0:
+                individual_loan_percentage = 0
+                small_loan_percentage = 0
+                micro_loan_percentage = 0
+                farm_loan_percentage = 0
+            else:
+                individual_loan_percentage = int(total_amount_individual) / int(total_loans)
+                small_loan_percentage = int(total_amount_small) / int(total_loans)
+                micro_loan_percentage = int(total_amount_micro) / int(total_loans)
+                farm_loan_percentage = int(total_amount_farm) / int(total_loans)
+
             # Need to customize s for more states
-            s = State.objects.get_or_create(name="North Carolina")
+            s = State.objects.get_or_create(name=states[row[2]])
             b = Bank(state=s[0], name=name, location=location,
                      net_income=net_income, total_assets=total_assets,
                      total_liability=total_liability,
                      return_on_equity=return_on_equity,
                      total_num_loans_small=total_num_loans_small,
                      total_num_loans_micro=total_num_loans_micro,
+                     total_num_loans_farm=total_num_loans_farm,
                      total_amount_small=total_amount_small,
-                     total_amount_micro=total_amount_micro)
+                     total_amount_micro=total_amount_micro,
+                     total_amount_farm=total_amount_farm,
+                     individual_loan_percentage=individual_loan_percentage,
+                     small_loan_percentage=small_loan_percentage,
+                     micro_loan_percentage=micro_loan_percentage,
+                     farm_loan_percentage=farm_loan_percentage)
             b.save()
         print("Banks imported")
 
