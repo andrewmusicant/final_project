@@ -19,22 +19,40 @@ function drawTable() {
   data.addColumn('string', 'Name');
   data.addColumn('number', 'Net Income');
   data.addColumn('number', 'Total Assets');
-  data.addColumn('number', 'Individual Loan Percentage');
-  data.addColumn('number', 'ROE - Future Jar Score');
+  data.addColumn('number', 'Total Liability');
+  data.addColumn('number', 'ROE');
+  data.addColumn('number', 'Small Loans');
+  data.addColumn('number', 'Micro Loans');
+  data.addColumn('number', 'Farm Loans');
+  data.addColumn('number', 'Total Loans');
+  data.addColumn('number', 'Ind. Amount');
+  data.addColumn('number', 'Small');
+  data.addColumn('number', 'Micro');
+  data.addColumn('number', 'Farm');
+  data.addColumn('number', 'Jar Score');
   data.addRows([
 
           ['{{ bank.name }}',
           {{ bank.net_income }},
           {{ bank.total_assets }},
-          {{ bank.individual_loan_percentage }},
+          {{ bank.total_liability }},
+          {{ bank.return_on_equity }},
+          {{ bank.total_num_loans_small }},
+          {{ bank.total_num_loans_micro }},
+          {{ bank.total_num_loans_farm }},
+          {{ bank.total_loans }},
+          {{ bank.total_amount_individual }},
+          {{ bank.total_amount_small  }},
+          {{ bank.total_amount_micro  }},
+          {{ bank.total_amount_farm }},
           {{ bank.return_on_equity }}],
 
 ]);
   var table = new google.visualization.Table(document.getElementById('table_div'));
 
   table.draw(data, {
-    showRowNumber: true,
-    width: '65%',
+    showRowNumber: false,
+    width: '100%',
     height: '100%'
   });
 }
