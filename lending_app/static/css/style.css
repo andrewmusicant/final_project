@@ -1,0 +1,73 @@
+/**********************
+Navigation
+**********************/
+
+/**********************
+Body
+**********************/
+
+
+
+/**********************
+Carousel
+**********************/
+
+@media only screen and (min-width: 768px) {
+  .carousel-container {
+    margin-left: 21%;
+    margin-right: 21%;
+  }
+}
+
+.carousel-inner .item img {
+  max-height: 70vh;
+}
+
+.carousel-text {
+  text-align: center;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.search-area {
+  text-align: center;
+}
+
+/**********************
+State Table
+**********************/
+
+#table_div {
+  text-align: center;
+}
+
+/**********************
+Typography
+**********************/
+
+.title-text {
+  text-align: center
+}
+
+.title-text > h1 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.title-text > h4 {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/**********************
+Color
+**********************/
+
+
+.title-text {
+  color: #1C140D;
+}
+
+.carousel-text {
+  color: #FFF;
+}
