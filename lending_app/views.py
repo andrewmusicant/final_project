@@ -26,7 +26,8 @@ def location(request):
 
 
 def country(request):
-    pass
+    context = {}
+    return render(request, 'country.html', context)
 
 
 def bank_detail(request):
