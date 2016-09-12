@@ -6,7 +6,10 @@ Navigation
 Body
 **********************/
 
-
+.search-area {
+  text-align: center;
+  margin-top: 3%;
+}
 
 /**********************
 Carousel
@@ -28,9 +31,7 @@ Carousel
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
-.search-area {
-  text-align: center;
-}
+
 
 /**********************
 State Table
