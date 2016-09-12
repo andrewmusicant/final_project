@@ -1,4 +1,44 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block body %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div id="table_div"></div>
+<script type="text/javascript">
+
+
+google.charts.load('current', {'packages':['table']});
+google.charts.setOnLoadCallback(drawTable);
+
+google.charts.load('current', {
+  'packages': ['table']
+});
+google.charts.setOnLoadCallback(drawTable);
+
+function drawTable() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Name');
+  data.addColumn('number', 'Net Income');
+  data.addColumn('number', 'Total Assets');
+  data.addColumn('number', 'Individual Loan Percentage');
+  data.addColumn('number', 'ROE - Future Jar Score');
+  data.addRows([
+
+          ['{{ bank.name }}',
+          {{ bank.net_income }},
+          {{ bank.total_assets }},
+          {{ bank.individual_loan_percentage }},
+          {{ bank.return_on_equity }}],
+
+]);
+  var table = new google.visualization.Table(document.getElementById('table_div'));
+
+  table.draw(data, {
+    showRowNumber: true,
+    width: '65%',
+    height: '100%'
+  });
+}
+
+
+</script>
 {% endblock %}

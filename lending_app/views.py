@@ -30,5 +30,10 @@ def country(request):
     return render(request, 'country.html', context)
 
 
-def bank_detail(request):
-    pass
+def bank_detail(request, bank_id):
+    bank_id = int(bank_id)
+    bank = Bank.objects.get(id=bank_id)
+    context = {
+        'bank': bank
+    }
+    return render(request, 'bank_detail.html', context)
