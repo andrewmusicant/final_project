@@ -19,3 +19,15 @@ def state(request, pk):
         'banks': banks
     }
     return render(request, 'state.html', context)
+
+
+def location(request):
+    pass
+
+
+def country(request):
+    pass
+
+
+def bank_detail(request):
+    pass
