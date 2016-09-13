@@ -22,7 +22,8 @@ def state(request, pk):
 
 
 def location(request):
-    pass
+    context = {}
+    return render(request, 'location.html', context)
 
 
 def country(request):
