@@ -23,7 +23,7 @@ function drawTable() {
   data.addRows([
   {% for bank in banks %}
 
-          ['<a href="{% url "bank_detail" bank.id %}">{{ bank.name }}</a>',
+          ['<a href="{% url "lending:bank_detail" bank.id %}">{{ bank.name }}</a>',
           {{ bank.total_assets }},
           {{ bank.individual_loan_percentage }},
           {{ bank.return_on_equity }}],

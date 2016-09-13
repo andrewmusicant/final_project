@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from . import views
 
+app_name = 'lending'
+
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^state/(?P<pk>[0-9]+)/$', views.state, name='state'),
