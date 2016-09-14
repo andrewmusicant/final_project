@@ -60,10 +60,32 @@ Typography
   margin-bottom: 1em;
 }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
 /**********************
 Color
 **********************/
 
+.navbar {
+    color: #FFF;
+    background-color:  #00838F;
+}
+
+a.navbar-brand {
+    color: #fff;
+}
+
+.navbar-nav>li>a {
+    color: #fff;
+}
 
 .title-text {
   color: #1C140D;
