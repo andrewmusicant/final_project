@@ -8,20 +8,20 @@
       google.charts.load("current", {packages:["corechart", 'table']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
-          var data = google.visualization.arrayToDataTable([
-            ['Loan Type', 'Percentage'],
-            ['Individual Loan Percentage', ({{bank.individual_loan_percentage}}*100)],
-            ['Small Loan Percentage', ({{bank.small_loan_percentage}}*100)],
-            ['Micro Loan Percentage', ({{bank.micro_loan_percentage}}*100)],
-            ['Farm Loan Percentage', ({{bank.farm_loan_percentage}}*100)],
-          ]);
-
-          var options = {
-            is3D: true,
-          };
-
-          var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-          chart.draw(data, options);
+          // var data = google.visualization.arrayToDataTable([
+          //   ['Loan Type', 'Percentage'],
+          //   ['Individual Loan Percentage', ({{bank.individual_loan_percentage}}*100)],
+          //   ['Small Loan Percentage', ({{bank.small_loan_percentage}}*100)],
+          //   ['Micro Loan Percentage', ({{bank.micro_loan_percentage}}*100)],
+          //   ['Farm Loan Percentage', ({{bank.farm_loan_percentage}}*100)],
+          // ]);
+          //
+          // var options = {
+          //   is3D: true,
+          // };
+          //
+          // var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+          // chart.draw(data, options);
 
           var data2 = new google.visualization.DataTable();
           data2.addColumn('number', 'Net Income');
@@ -62,11 +62,53 @@
           height: '100%'
         });}
     </script>
+    <style>
+    #chartdiv {
+      width: 100%;
+      height: 500px;
+    }
+    </style>
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script>
+    var chart = AmCharts.makeChart( "chartdiv", {
+      "type": "pie",
+      "theme": "light",
+      "dataProvider": [ {
+        "Loan Type": "Individual Loan Percentage",
+        "Percentage": ({{bank.individual_loan_percentage}}*100)
+      }, {
+        "Loan Type": "Small Loan Percentage",
+        "Percentage": ({{bank.small_loan_percentage}}*100)
+      }, {
+        "Loan Type": "Micro Loan Percentage",
+        "Percentage": ({{bank.micro_loan_percentage}}*100)
+      }, {
+        "Loan Type": "Farm Loan Percentage",
+        "Percentage": ({{bank.farm_loan_percentage}}*100)
+      } ],
+      "valueField": "Percentage",
+      "titleField": "Loan Type",
+      "outlineAlpha": 0.4,
+      "depth3D": 15,
+      "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+      "angle": 30,
+      "export": {
+        "enabled": true
+      }
+    } );
+    </script>
   </head>
   <body>
     <h2>{{ bank.name }}</h2>
     <div id="table_div"></div>
-    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+    <!-- <div id="piechart_3d" style="width: 900px; height: 500px;"></div> -->
+    <div id="chartdiv"></div>
   </body>
 </html>
 {% endblock %}
