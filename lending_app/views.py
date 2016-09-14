@@ -22,7 +22,7 @@ def index(request):
         data = serializers.serialize('json', filtered_banks)
         request.session['bank_list'] = data
         # RETURNS TO AJAX CALL
-        return HttpResponseRedirect(reverse('location'))
+        return HttpResponseRedirect(reverse('lending:location'))
 
     states = State.objects.all()
     context = {
