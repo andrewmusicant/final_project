@@ -17,16 +17,15 @@ google.charts.setOnLoadCallback(drawTable);
 function drawTable() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Name');
-  data.addColumn('number', 'Micro Loan');
-  data.addColumn('number', 'Small Business Loans');
-  data.addColumn('number', 'ROE');
+  data.addColumn('number', 'Total Assets');
+  data.addColumn('number', 'Individual Loan Percentage');
+  data.addColumn('number', 'ROE - Future Jar Score');
   data.addRows([
+  {% for bank in banks %}
 
-      {% for bank in banks %}
-
-          ['{{ bank.name }}',
-          {{ bank.total_amount_micro }},
-          {{ bank.total_amount_small }},
+          ['<a href="{% url "lending:bank_detail" bank.id %}">{{ bank.name }}</a>',
+          {{ bank.total_assets }},
+          {{ bank.individual_loan_percentage }},
           {{ bank.return_on_equity }}],
       {% endfor %}
 ]);
@@ -35,7 +34,8 @@ function drawTable() {
   table.draw(data, {
     showRowNumber: true,
     width: '65%',
-    height: '100%'
+    height: '100%',
+    allowHtml: true
   });
 }
 

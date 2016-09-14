@@ -1,4 +1,72 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block body %}
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart", 'table']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Loan Type', 'Percentage'],
+            ['Individual Loan Percentage', ({{bank.individual_loan_percentage}}*100)],
+            ['Small Loan Percentage', ({{bank.small_loan_percentage}}*100)],
+            ['Micro Loan Percentage', ({{bank.micro_loan_percentage}}*100)],
+            ['Farm Loan Percentage', ({{bank.farm_loan_percentage}}*100)],
+          ]);
+
+          var options = {
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+          chart.draw(data, options);
+
+          var data2 = new google.visualization.DataTable();
+          data2.addColumn('number', 'Net Income');
+          data2.addColumn('number', 'Total Assets');
+          data2.addColumn('number', 'Total Liability');
+          data2.addColumn('number', 'ROE');
+          data2.addColumn('number', 'Small Loans');
+          data2.addColumn('number', 'Micro Loans');
+          data2.addColumn('number', 'Farm Loans');
+          data2.addColumn('number', 'Total Loans');
+          data2.addColumn('number', 'Ind. Amount');
+          data2.addColumn('number', 'Small');
+          data2.addColumn('number', 'Micro');
+          data2.addColumn('number', 'Farm');
+          data2.addColumn('number', 'Jar Score');
+          data2.addRows([
+
+                [{{ bank.net_income }},
+                {{ bank.total_assets }},
+                {{ bank.total_liability }},
+                {{ bank.return_on_equity }},
+                {{ bank.total_num_loans_small }},
+                {{ bank.total_num_loans_micro }},
+                {{ bank.total_num_loans_farm }},
+                {{ bank.total_loans }},
+                {{ bank.total_amount_individual }},
+                {{ bank.total_amount_small  }},
+                {{ bank.total_amount_micro  }},
+                {{ bank.total_amount_farm }},
+                {{ bank.return_on_equity }}],
+
+      ]);
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data2, {
+          showRowNumber: false,
+          width: '100%',
+          height: '100%'
+        });}
+    </script>
+  </head>
+  <body>
+    <h2>{{ bank.name }}</h2>
+    <div id="table_div"></div>
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
 {% endblock %}

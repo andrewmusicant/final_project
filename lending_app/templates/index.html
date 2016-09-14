@@ -61,7 +61,7 @@
           </span>
         </div>
       {% for state in states %}
-        <a href="{% url 'state' state.pk %}">{{ state.name }}</a>
+        <a href="{% url 'lending:state' state.pk %}">{{ state.name }}</a>
       {% endfor %}
       </div>
     </div>
