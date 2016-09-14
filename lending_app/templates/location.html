@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+{% for bank in bank_list %}
+  <p>{{ bank.name }} {{ bank.return_on_equity }}</p>
+{% endfor %}
 {% endblock %}

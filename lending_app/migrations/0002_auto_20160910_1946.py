@@ -9,7 +9,7 @@ import os
 
 
 def import_data(apps, schema_editor):
-    filename = os.path.abspath('bank_data.csv')
+    filename = os.path.abspath('filtered_bank_data.csv')
     Bank = apps.get_model("lending_app", "Bank")
     State = apps.get_model("lending_app", "State")
 
