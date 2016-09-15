@@ -31,9 +31,9 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def state(request, pk):
-    pk = int(pk)
-    state = State.objects.get(pk=pk)
+def state(request, state):
+    state_name = state
+    state = State.objects.get(name=state_name)
     banks = Bank.objects.filter(state=state).order_by('-return_on_equity')
     context = {
         'banks': banks
