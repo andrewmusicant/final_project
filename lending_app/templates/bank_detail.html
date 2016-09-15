@@ -15,7 +15,6 @@
   function drawChart() {
 
       var data2 = new google.visualization.DataTable();
-      data2.addColumn('number', 'Net Income');
       data2.addColumn('number', 'Total Assets');
       data2.addColumn('number', 'Total Liability');
       data2.addColumn('number', 'ROE');
@@ -30,8 +29,7 @@
       data2.addColumn('number', 'Jar Score');
       data2.addRows([
 
-            [{{ bank.net_income }},
-            {{ bank.total_assets }},
+            [{{ bank.total_assets }},
             {{ bank.total_liability }},
             {{ bank.return_on_equity }},
             {{ bank.total_num_loans_small }},
