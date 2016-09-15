@@ -63,6 +63,10 @@
 				.style("top", (d3.event.pageY - 28) + "px");
 		}
 
+    function mouseClick(d) {
+      location.href = "/state/" + d.n;
+    }
+
 		function mouseOut(){
 			d3.select("#tooltip").transition().duration(500).style("opacity", 0);
 		}
@@ -70,7 +74,7 @@
 		d3.select(id).selectAll(".state")
 			.data(uStatePaths).enter().append("path").attr("class","state").attr("d",function(d){ return d.d;})
 			.style("fill",function(d){ return data[d.id].color; })
-			.on("mouseover", mouseOver).on("mouseout", mouseOut);
+			.on("mouseover", mouseOver).on("mouseout", mouseOut).on("click", mouseClick);
 	};
 	this.uStates=uStates;
 })();
