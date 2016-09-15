@@ -90,6 +90,11 @@ Country Map
   text-align:center;
 }
 
+.usa-map {
+  display: block;
+  margin: auto;
+}
+
 /**********************
 Typography
 **********************/
