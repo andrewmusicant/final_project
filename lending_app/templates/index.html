@@ -60,9 +60,6 @@
           <input type="button" class="btn btn-default" value="Search" onclick="codeAddress()">
           </span>
         </div>
-      {% for state in states %}
-        <a href="{% url 'lending:state' state.name %}">{{ state.name }}</a>
-      {% endfor %}
       </div>
     </div>
   </div>

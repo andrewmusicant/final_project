@@ -31,8 +31,6 @@ Carousel
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
-
-
 /**********************
 State Table
 **********************/
@@ -90,6 +88,11 @@ Country Map
 }
 #tooltip tr td:nth-child(2){
   text-align:center;
+}
+
+.usa-map {
+  display: block;
+  margin: auto;
 }
 
 /**********************
