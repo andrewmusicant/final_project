@@ -122,7 +122,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+/**********************
+Navbar
+**********************/
 
+.nav>li>a:hover {
+  color:  #CFD8DC;
+  background-color:  #00838F;
+}
 
 /**********************
 Color
