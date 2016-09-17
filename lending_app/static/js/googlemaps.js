@@ -7,7 +7,7 @@ $('#address').keypress(function(e) {
     codeAddress();
     return false;
   }
-})
+});
 
 function codeAddress() {
   var address = document.getElementById('address').value;
@@ -57,7 +57,7 @@ function postBankList(bankArray) {
       window.location.replace("/location");
     },
     error: function(e) {
-      console.log(e)
+      console.log(e);
     }
   });
 }
