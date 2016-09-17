@@ -139,6 +139,7 @@ def import_data(apps, schema_editor):
             average_earning_assets = row[48]
             average_equity = row[49]
             average_total_loans = row[50]
+            number_domestic_offices = row[51]
 
             # Need to customize s for more states
             s = State.objects.get_or_create(name=states[row[2]])
@@ -189,7 +190,8 @@ def import_data(apps, schema_editor):
                      average_total_assets=average_total_assets,
                      average_earning_assets=average_earning_assets,
                      average_equity=average_equity,
-                     average_total_loans=average_total_loans)
+                     average_total_loans=average_total_loans,
+                     number_domestic_offices=number_domestic_offices)
             b.save()
         print("Banks imported")
 
