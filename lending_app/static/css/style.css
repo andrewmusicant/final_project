@@ -184,6 +184,10 @@ a.navbar-brand {
 /**********************************
 bar chart
 *****************/
+#bartitle {
+text-align: center
+
+}
 .axis path,
 .axis line {
 	fill: none;
