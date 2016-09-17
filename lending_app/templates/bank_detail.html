@@ -41,7 +41,7 @@
           <div class="bank-chart-col col-1">
             <div id="pieChart"></div>
           </div>
-          <div class="bank-chart-col col-2">
+          <div class="bank-chart-col col-2"; style="padding-left:3px">
               <div>
                 <h5> Total Liablity: <span class="dollars">{{ bank.total_liability }}</span></h5>
                 <h5> Return On Equity: {{ bank.return_on_equity }}</h5>
@@ -55,8 +55,11 @@
               <h5 id="bartitle">Total Number of Loans</h5>
               <div id="barchart"; style="padding-left:50px"></div>
           </div>
-          <div class="bank-chart-col col-4">
-          </div>
+          <div class="bank-chart-col col-4"; style="padding-left:3px">
+            <h5> Total Amount of Real Estate Loans: {{ bank.total_amount_individual }}</h5>
+            <h5> Home Equity Loans: {{ bank.home_equity_loans }}</h5>
+
+         </div>
         </div>
       </div>
     </div>
