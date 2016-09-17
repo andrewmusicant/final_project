@@ -52,6 +52,21 @@ def location(request):
 
 
 def country(request):
+
+    if request.POST:
+        banks = request.POST.getlist('bankArray[]')
+
+        queries = [Q(name__icontains=bank) for bank in banks]
+        query = queries.pop()
+        for item in queries:
+            query |= item
+
+        filtered_banks = Bank.objects.filter(query)
+        data = serializers.serialize('json', filtered_banks)
+        request.session['bank_list'] = data
+        # RETURNS TO AJAX CALL
+        return HttpResponseRedirect(reverse('lending:location'))
+        
     context = {}
     return render(request, 'country.html', context)
 

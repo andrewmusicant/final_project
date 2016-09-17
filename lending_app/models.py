@@ -3,6 +3,8 @@ from django.db import models
 
 class State(models.Model):
     name = models.CharField(max_length=100)
+    number_of_banks = models.IntegerField(default=0)
+    average_score = models.FloatField()
 
 
 class Bank(models.Model):
@@ -67,3 +69,6 @@ class Bank(models.Model):
     average_earning_assets = models.FloatField()
     average_equity = models.FloatField()
     average_total_loans = models.FloatField()
+
+    total_complaints = models.IntegerField(default=0)
+    score = models.FloatField()
