@@ -130,7 +130,24 @@ Navbar
   color:  #CFD8DC;
   background-color:  #00838F;
 }
+.search-area {
+  margin-top: 0%;
+  position: absolute;
+  top: 7px;
+}
 
+.button {
+  margin-left: 100px;
+}
+
+.navbar-collapse {
+  float:left;
+}
+
+.navbar-header {
+  position: absolute;
+  top: -4px;
+}
 /**********************
 Color
 **********************/
