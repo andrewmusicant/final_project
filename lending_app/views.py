@@ -63,3 +63,8 @@ def bank_detail(request, bank_id):
         'bank': bank
     }
     return render(request, 'bank_detail.html', context)
+
+
+def about(request):
+    context = {}
+    return render(request, 'about_us.html', context)
