@@ -136,8 +136,11 @@ Navbar
   top: 7px;
 }
 
-.button {
-  margin-left: 100px;
+.button1 {
+  margin-left: 90px;
+}
+.button2 {
+  margin-left: 0px;
 }
 
 .navbar-collapse {
