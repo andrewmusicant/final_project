@@ -9,7 +9,7 @@ import os
 
 
 def import_data(apps, schema_editor):
-    filename = os.path.abspath('bank_data.csv')
+    filename = os.path.abspath('final_bank_data.csv')
     Bank = apps.get_model("lending_app", "Bank")
     State = apps.get_model("lending_app", "State")
 
@@ -74,24 +74,24 @@ def import_data(apps, schema_editor):
     with open(filename) as f:
         f.seek(0)
         reader = csv.reader(f, delimiter=",")
-        next(reader)
+        # next(reader)
         for row in reader:
             for index, item in enumerate(row):
                 if item == '':
                     row[index] = 0
             name = row[0]
             location = row[1] + ", " + row[2] + ", " + row[3]  # city, state, zipcode
-            number_of_employees = row[5] # +
-            total_assets = row[6] # +
-            total_liability = row[7] # +
-            total_deposits = row[8] # +
-            common_stock = row[9] # +
-            derivatives = row[10] # +
-            total_securities = row[11] # +
-            asset_backed_securities = row[12] # +
-            mortgage_backed_securities = row[13] # +
-            family_residential_loans = row[14] # +
-            home_equity_loans = row[15] # +
+            number_of_employees = row[5]
+            total_assets = row[6]
+            total_liability = row[7]
+            total_deposits = row[8]
+            common_stock = row[9]
+            derivatives = row[10]
+            total_securities = row[11]
+            asset_backed_securities = row[12]
+            mortgage_backed_securities = row[13]
+            family_residential_loans = row[14]
+            home_equity_loans = row[15]
             adjustable_rate_loans_secured_by_family_residential = row[16]
             total_loans = row[17]
             total_amount_individual = row[18]
@@ -140,6 +140,10 @@ def import_data(apps, schema_editor):
             average_equity = row[49]
             average_total_loans = row[50]
             number_domestic_offices = row[51]
+            total_complaints = row[53]
+            score = (individual_loan_percentage + small_loan_percentage +
+                     micro_loan_percentage + farm_loan_percentage)
+
 
             # Need to customize s for more states
             s = State.objects.get_or_create(name=states[row[2]])
@@ -191,9 +195,23 @@ def import_data(apps, schema_editor):
                      average_earning_assets=average_earning_assets,
                      average_equity=average_equity,
                      average_total_loans=average_total_loans,
-                     number_domestic_offices=number_domestic_offices)
+                     number_domestic_offices=number_domestic_offices,
+                     total_complaints=total_complaints,
+                     score=score)
             b.save()
         print("Banks imported")
+
+
+def update_states(apps, schema_editor):
+    State = apps.get_model("lending_app", "State")
+    states = State.objects.all()
+    for state in states:
+        b = state.bank_set.count()
+        avg_of_score = state.bank_set.aggregate(models.Avg('score'))['score__avg']
+        state.number_of_banks = b
+        state.average_score = avg_of_score
+        state.save()
+
 
 
 class Migration(migrations.Migration):
@@ -203,5 +221,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(import_data)
+        migrations.RunPython(import_data),
+        migrations.RunPython(update_states)
     ]

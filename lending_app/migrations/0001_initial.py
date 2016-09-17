@@ -70,6 +70,8 @@ class Migration(migrations.Migration):
                 ('average_earning_assets', models.FloatField()),
                 ('average_equity', models.FloatField()),
                 ('average_total_loans', models.FloatField()),
+                ('total_complaints', models.IntegerField()),
+                ('score', models.FloatField()),
             ],
         ),
         migrations.CreateModel(
@@ -77,6 +79,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
+                ('number_of_banks', models.IntegerField(default=0)),
+                ('average_score', models.FloatField(default=0.0)),
             ],
         ),
         migrations.AddField(
