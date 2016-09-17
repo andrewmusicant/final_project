@@ -1,14 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/bank_detail.css' %}">
+{% endblock %}
+
 {% block body %}
-<h2>{{ bank.name }}</h2>
-<div id="table_div"></div>
-<div id="pieChart"></div>
+<div class="bank-detail">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="bank-large">
+          <h3>{{ bank.name }}</h3>
+          <h1 class="score">65%</h1>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="bank-info">
+          <div class="bank-info-row row-1 vcenter">
+            <p>Total Assets: {{ bank.total_assets }}</p>
+          </div>
+          <div class="bank-info-row row-2 vcenter">
+            <p>Number of Branches: {{ bank.number_domestic_offices }}</p>
+          </div>
+          <div class="bank-info-row row-3 vcenter">
+            <p>Number of Employees: {{ bank.number_of_employees }}</p>
+          </div>
+          <div class="bank-info-row row-4 vcenter">
+            <p>Number of Complaints: 15</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="bank-charts">
+          <div class="bank-chart-col col-1">
+            <div id="pieChart"></div>
+          </div>
+          <div class="bank-chart-col col-2">
+          </div>
+          <div class="bank-chart-col col-3">
+          </div>
+          <div class="bank-chart-col col-4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div id="table_div"></div>
+<div id="pieChart"></div> -->
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load("current", {packages:["corechart", 'table']});
   google.charts.setOnLoadCallback(drawChart);
@@ -51,7 +97,7 @@
       height: '100%'
     });
   }
-</script>
+</script> -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
 <script src="{% static 'js/d3pie.min.js' %}"></script>
 <script>
@@ -59,7 +105,7 @@ var pie = new d3pie("pieChart", {
 	"header": {
 		"title": {
 			"text": "Percentages Of Loans for Bank",
-			"fontSize": 24,
+			"fontSize": 12,
 			"font": "open sans"
 		},
 		"subtitle": {
@@ -67,38 +113,39 @@ var pie = new d3pie("pieChart", {
 			"fontSize": 12,
 			"font": "Josefin sans"
 		},
-		"titleSubtitlePadding": 9
+		"titleSubtitlePadding": 10
 	},
 	"footer": {
 		"color": "#999999",
 		"fontSize": 10,
 		"font": "open sans",
-		"location": "bottom-left"
+		"location": "left"
 	},
 	"size": {
-		"canvasWidth": 590,
+		"canvasWidth": 280,
+    "canvasHeight": 280,
 		"pieOuterRadius": "90%"
 	},
 	"data": {
 		"sortOrder": "value-desc",
 		"content": [
 			{
-				"label": "Small Business Loan",
+				"label": "Small Business",
 				"value": ({{bank.small_loan_percentage}}*100),
 				"color": "#B2EBF2"
 			},
 			{
-				"label": "Individual Loan",
+				"label": "Individual",
 				"value": ({{bank.individual_loan_percentage}}*100),
 				"color": "#0097A7"
 			},
 			{
-				"label": "Farm Loan",
+				"label": "Farm",
 				"value": ({{bank.farm_loan_percentage}}*100),
 				"color": "#00BCD4"
 			},
 			{
-				"label": "Micro Loan",
+				"label": "Micro",
 				"value": ({{bank.micro_loan_percentage}}*100),
 				"color": "#4DD0E1"
 			}

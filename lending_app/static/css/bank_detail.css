@@ -1,0 +1,116 @@
+/**************
+Reset CSS
+**************/
+
+.container {
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.col-xs-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-xs-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/**********************
+Bank Detail
+**********************/
+
+.bank-large {
+  height: 45vh;
+}
+
+.bank-info {
+  height: 45vh;
+}
+
+.bank-charts {
+  height: 33vh;
+  padding-left: 3%;
+}
+
+.bank-info-row {
+  height: 25%;
+}
+
+.bank-chart-col {
+  float: left;
+  position: relative;
+  width: 25%;
+  height: 100%;
+}
+
+/**********************
+Typography
+**********************/
+
+.bank-detail h1, .bank-detail h3 {
+  text-align: center;
+  padding: 5%;
+  margin: 0;
+}
+
+.bank-detail h1 {
+  font-size: 5em;
+}
+
+.bank-detail h3 {
+  font-size: 3em;
+}
+
+.bank-detail p {
+  font-size: 2.3em;
+  margin: 0;
+  padding-left: 1%;
+}
+
+/**********************
+Color
+**********************/
+
+.bank-large {
+  background-color: #fff;
+}
+
+.row-1 {
+  background-color: #B2EBF2;
+}
+
+.row-2 {
+  background-color: #fff;
+;
+}
+
+.row-3 {
+  background-color: #B2EBF2;
+}
+
+.row-4 {
+  background-color: #fff;
+}
+
+.col-1 {
+  background-color: #fff;
+}
+
+.col-2 {
+  background-color: #B2EBF2;
+}
+
+.col-3 {
+  background-color: #fff;
+}
+
+.col-4 {
+  background-color: #B2EBF2;
+}
