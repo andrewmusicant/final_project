@@ -6,6 +6,9 @@
 {% endblock %}
 
 {% block body %}
+<style type="text/css">
+    .dollars:before { content:'$'; }
+</style>
 <div class="bank-detail">
   <div class="container-fluid">
     <div class="row">
@@ -18,7 +21,7 @@
       <div class="col-xs-6">
         <div class="bank-info">
           <div class="bank-info-row row-1 vcenter">
-            <p>Total Assets: {{ bank.total_assets }}</p>
+            <p>Total Assets: <span class="dollars">{{ bank.total_assets }}</span></p>
           </div>
           <div class="bank-info-row row-2 vcenter">
             <p>Number of Branches: {{ bank.number_domestic_offices }}</p>
