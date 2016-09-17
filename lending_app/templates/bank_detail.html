@@ -15,7 +15,7 @@
       <div class="col-xs-6">
         <div class="bank-large">
           <h3>{{ bank.name }}</h3>
-          <h1 class="score">65%</h1>
+          <h1 class="score">{{ bank.score }}</h1>
         </div>
       </div>
       <div class="col-xs-6">
@@ -30,7 +30,7 @@
             <p>Number of Employees: {{ bank.number_of_employees }}</p>
           </div>
           <div class="bank-info-row row-4 vcenter">
-            <p>Number of Complaints: 15</p>
+            <p>Number of Complaints: {{ bank.total_complaints }}</p>
           </div>
         </div>
       </div>
