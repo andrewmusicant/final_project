@@ -52,13 +52,16 @@
               </div>
           </div>
           <div class="bank-chart-col col-3">
-              <h5 id="bartitle">Total Number of Loans</h5>
+              <h5 id="bartitle">Total Number of Loans Small/Micro/Farm</h5>
               <div id="barchart"; style="padding-left:50px"></div>
           </div>
-          <div class="bank-chart-col col-4"; style="padding-left:3px">
-            <h5> Total Amount of Real Estate Loans: {{ bank.total_amount_individual }}</h5>
+          <div class="bank-chart-col col-4"; style="padding-left:4px">
+            <h5> Number of Residental Real Estate Loans: {{ bank.family_residential_loans }}</h5>
             <h5> Home Equity Loans: {{ bank.home_equity_loans }}</h5>
-
+            <h5> Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential }}</h5>
+            <h5> Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family }}</h5>
+            <h5> Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate }}</h5>
+            <h5> Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland }}</h5>
          </div>
         </div>
       </div>
@@ -212,11 +215,10 @@ var pie = new d3pie("pieChart", {
 var h = 180;
 
 var dataset = [
-	{ key: 0, value: 5 },
-	{ key: 1, value: 10 },
-	{ key: 2, value: 13 },
-	{ key: 3, value: 19 },
-	{ key: 4, value: 21 },
+	{ key: 0, value: {{bank.total_num_loans_small}} },
+	{ key: 1, value: {{bank.total_num_loans_micro}} },
+	{ key: 2, value: {{bank.total_num_loans_farm}} },
+
  ];
 
 var xScale = d3.scale.ordinal()
