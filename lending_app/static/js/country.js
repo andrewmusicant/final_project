@@ -1,19 +1,20 @@
 function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
   return "<h4>"+n+"</h4><table>"+
-    "<tr><td>Banks:</td><td>"+13+"</td></tr>"+
+    "<tr><td>Banks:</td><td>"+ numOfBanks[n] +"</td></tr>"+
     // "<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
     // "<tr><td>High</td><td>"+15+"</td></tr>"+
     "</table>";
 }
 
 var sampleData ={};	/* Sample random data. */
-["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
-"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
-"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
-"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+["Hawaii", "Alaska", "Florida", "South Carolina", "Georgia", "Alabama", "North Carolina", "Tennessee", "Rhode Island", "Connecticut",
+"Massachusetts", "Maine", "New Hampshire", "Vermont", "New York", "New Jersey", "Pennsylvania", "Delaware", "Maryland", "West Virginia",
+"Kentucky", "Ohio", "Michigan", "Wyoming", "Montana", "Idaho", "Washington", "District of Columbia", "Texas", "California", "Arizona", "Nevada", "Utah",
+"Colorado", "New Mexico", "Oregon", "North Dakota", "South Dakota", "Nebraska", "Iowa", "Mississippi", "Indiana", "Illinois", "Minnesota",
+"Wisconsin", "Missouri", "Arkansas", "Oklahoma", "Kansas", "Louisiana", "Virginia"]
   .forEach(function(state){
-    var low=Math.round(100*Math.random());
+    var low=numOfBanks[state];
+    console.log(low);
     sampleData[state]={low:d3.min([low]), high:d3.max([low]),
         avg:Math.round((low)/1), color:d3.interpolate("#E0F7FA", "#006064")(low/100)};
   });
