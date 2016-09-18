@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/bank_detail.css' %}">
@@ -15,19 +16,19 @@
       <div class="col-xs-6">
         <div class="bank-large">
           <h3>{{ bank.name }}</h3>
-          <h1 class="score">{{ bank.score }}</h1>
-        </div>
+          <h1 class="score">{{ bank.score|floatformat:2 }}</h1>
+          </div>
       </div>
       <div class="col-xs-6">
         <div class="bank-info">
           <div class="bank-info-row row-1 vcenter">
-            <p>Total Assets: <span class="dollars">{{ bank.total_assets }}</span></p>
+            <p>Total Assets: <span class="dollars">{{ bank.total_assets|intcomma }}</span></p>
           </div>
           <div class="bank-info-row row-2 vcenter">
-            <p>Number of Branches: {{ bank.number_domestic_offices }}</p>
+            <p>Number of Branches: {{ bank.number_domestic_offices|intcomma }}</p>
           </div>
           <div class="bank-info-row row-3 vcenter">
-            <p>Number of Employees: {{ bank.number_of_employees }}</p>
+            <p>Number of Employees: {{ bank.number_of_employees|intcomma }}</p>
           </div>
           <div class="bank-info-row row-4 vcenter">
             <p>Number of Complaints: {{ bank.total_complaints }}</p>
@@ -43,22 +44,25 @@
           </div>
           <div class="bank-chart-col col-2"; style="padding-left:3px">
               <div>
-                <h5> Total Liablity: <span class="dollars">{{ bank.total_liability }}</span></h5>
-                <h5> Return On Equity: {{ bank.return_on_equity }}</h5>
-                <h5> Total Deposits: <span class="dollars">{{ bank.total_deposits }}</span></h5>
-                <h5> Common Stock: {{ bank.common_stock }}</h5>
-                <h5> Return On Assets: {{ bank.return_on_assets }}</h5>
-                <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity }}</h5>
+                <h5> Total Liablity: <span class="dollars">{{ bank.total_liability|intcomma }}</span></h5>
+                <h5> Return On Equity: {{ bank.return_on_equity|floatformat:2 }}</h5>
+                <h5> Total Deposits: <span class="dollars">{{ bank.total_deposits|intcomma }}</span></h5>
+                <h5> Common Stock: {{ bank.common_stock|intcomma }}</h5>
+                <h5> Return On Assets: {{ bank.return_on_assets|floatformat:2 }}</h5>
+                <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity|floatformat:2 }}</h5>
               </div>
           </div>
           <div class="bank-chart-col col-3">
-              <h5 id="bartitle">Total Number of Loans</h5>
+              <h5 id="bartitle">Total Number of Loans Small/Micro/Farm</h5>
               <div id="barchart"; style="padding-left:50px"></div>
           </div>
-          <div class="bank-chart-col col-4"; style="padding-left:3px">
-            <h5> Total Amount of Real Estate Loans: {{ bank.total_amount_individual }}</h5>
-            <h5> Home Equity Loans: {{ bank.home_equity_loans }}</h5>
-
+          <div class="bank-chart-col col-4"; style="padding-left:4px">
+            <h5> Number of Residental Real Estate Loans: {{ bank.family_residential_loans|intcomma }}</h5>
+            <h5> Home Equity Loans: {{ bank.home_equity_loans|intcomma }}</h5>
+            <h5> Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</h5>
+            <h5> Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
+            <h5> Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
+            <h5> Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
          </div>
         </div>
       </div>
@@ -212,11 +216,10 @@ var pie = new d3pie("pieChart", {
 var h = 180;
 
 var dataset = [
-	{ key: 0, value: 5 },
-	{ key: 1, value: 10 },
-	{ key: 2, value: 13 },
-	{ key: 3, value: 19 },
-	{ key: 4, value: 21 },
+	{ key: 0, value: {{bank.total_num_loans_small}} },
+	{ key: 1, value: {{bank.total_num_loans_micro}} },
+	{ key: 2, value: {{bank.total_num_loans_farm}} },
+
  ];
 
 var xScale = d3.scale.ordinal()
