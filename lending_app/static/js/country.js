@@ -16,7 +16,7 @@ var sampleData ={};	/* Sample random data. */
     var low=numOfBanks[state];
     console.log(low);
     sampleData[state]={low:d3.min([low]), high:d3.max([low]),
-        avg:Math.round((low)/1), color:d3.interpolate("#E0F7FA", "#006064")(low/100)};
+        avg:Math.round((low)/1), color:d3.interpolate("#E0F7FA", "#006064")(low/225)};
   });
 
 /* draw states on id #statesvg */

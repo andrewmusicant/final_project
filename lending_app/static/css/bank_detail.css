@@ -75,6 +75,10 @@ Typography
   padding-left: 1%;
 }
 
+.bank-detail h5{
+    font-size: 1.3em;
+}
+
 /**********************
 Color
 **********************/
