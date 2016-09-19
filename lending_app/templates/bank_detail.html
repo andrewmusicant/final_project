@@ -3,6 +3,7 @@
 {% load humanize %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'css/nv.d3.css' %}">
 <link rel="stylesheet" href="{% static 'css/bank_detail.css' %}">
 {% endblock %}
 
@@ -62,64 +63,22 @@
          </div>
           <div class="bank-chart-col col-3 vcenter">
               <h5 id="bartitle">Total Number of Loans Small/Micro/Farm</h5>
-              <div id="barchart"; style="padding-left:50px"></div>
+              <!--<div id="barchart"; style="padding-left:50px"></div> -->
+              <div id="chart">
+                <svg></svg>
+              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- <div id="table_div"></div>
-<div id="pieChart"></div> -->
 {% endblock %}
 
 {% block scripts %}
-<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load("current", {packages:["corechart", 'table']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-
-      var data2 = new google.visualization.DataTable();
-      data2.addColumn('number', 'Total Assets');
-      data2.addColumn('number', 'Total Liability');
-      data2.addColumn('number', 'ROE');
-      data2.addColumn('number', 'Small Loans');
-      data2.addColumn('number', 'Micro Loans');
-      data2.addColumn('number', 'Farm Loans');
-      data2.addColumn('number', 'Total Loans');
-      data2.addColumn('number', 'Ind. Amount');
-      data2.addColumn('number', 'Small');
-      data2.addColumn('number', 'Micro');
-      data2.addColumn('number', 'Farm');
-      data2.addColumn('number', 'Jar Score');
-      data2.addRows([
-
-            [{{ bank.total_assets }},
-            {{ bank.total_liability }},
-            {{ bank.return_on_equity }},
-            {{ bank.total_num_loans_small }},
-            {{ bank.total_num_loans_micro }},
-            {{ bank.total_num_loans_farm }},
-            {{ bank.total_loans }},
-            {{ bank.total_amount_individual }},
-            {{ bank.total_amount_small  }},
-            {{ bank.total_amount_micro  }},
-            {{ bank.total_amount_farm }},
-            {{ bank.return_on_equity }}],
-
-  ]);
-    var table = new google.visualization.Table(document.getElementById('table_div'));
-
-    table.draw(data2, {
-      showRowNumber: false,
-      width: '100%',
-      height: '100%'
-    });
-  }
-</script> -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
 <script src="{% static 'js/d3pie.min.js' %}"></script>
+<script src="{% static 'js/nv.d3.js' %}"></script>
 <script>
 var pie = new d3pie("pieChart", {
 	"header": {
@@ -212,7 +171,7 @@ var pie = new d3pie("pieChart", {
 });
 </script>
 
-<script>var w = 150;
+<!-- <script>var w = 150;
 var h = 180;
 
 var dataset = [
@@ -406,5 +365,50 @@ function reset() {
         return h - yScale(d.value) + 14;
     });
 };
+</script> -->
+<script>
+  nv.addGraph(function() {
+    var width = 600, height = 600;
+    var chart = nv.models.discreteBarChart()
+        .x(function(d) { return d.label })    //Specify the data accessors.
+        .y(function(d) { return d.value })
+        .showYAxis(false)
+        .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
+        .tooltips(false)        //Don't show tooltips
+        .showValues(true)       //...instead, show the bar value right on top of each bar.
+        ;
+
+    d3.select('#chart svg')
+        .datum(exampleData())
+        .transition().duration(350)
+        .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  //Each bar represents a single discrete quantity.
+  function exampleData() {
+   return  [
+      {
+        key: "Cumulative Return",
+        values: [
+          {
+            "label" : "Micro" ,
+            "value" : {{bank.total_num_loans_micro}}
+          } ,
+          {
+            "label" : "Small" ,
+            "value" : {{bank.total_num_loans_small}}
+          } ,
+          {
+            "label" : "Farm" ,
+            "value" : {{bank.total_num_loans_farm}}
+          }
+        ]
+      }
+    ]
+  }
 </script>
 {% endblock %}
