@@ -22,6 +22,11 @@ Reset CSS
   padding-right: 0;
 }
 
+h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 
 /**********************
 Bank Detail
@@ -48,6 +53,7 @@ Bank Detail
   position: relative;
   width: 25%;
   height: 100%;
+  padding: 1%;
 }
 
 /**********************
@@ -84,8 +90,9 @@ Typography
   margin: 0;
 }
 .bank-detail h5{
-    font-size: 1.3em;
-    padding-bottom: 8%;
+    font-size: 1.1em;
+    padding-top: 5%;
+    padding-bottom: 5%;
     font-family: 'Open Sans', sans-serif;
 }
 
