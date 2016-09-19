@@ -1,8 +1,7 @@
 function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
   return "<h4>"+n+"</h4><table>"+
     "<tr><td>Banks:</td><td>"+ numOfBanks[n] +"</td></tr>"+
-    // "<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
-    // "<tr><td>High</td><td>"+15+"</td></tr>"+
+    "<tr><td>Average:</td><td>"+avgOfBanks[n]+"</td></tr>"+
     "</table>";
 }
 
@@ -14,7 +13,6 @@ var sampleData ={};	/* Sample random data. */
 "Wisconsin", "Missouri", "Arkansas", "Oklahoma", "Kansas", "Louisiana", "Virginia"]
   .forEach(function(state){
     var low=numOfBanks[state];
-    console.log(low);
     sampleData[state]={low:d3.min([low]), high:d3.max([low]),
         avg:Math.round((low)/1), color:d3.interpolate("#E0F7FA", "#006064")(low/225)};
   });
