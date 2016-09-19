@@ -1,7 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+{% endblock %}
+
 {% block body %}
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div class="datatable">
+  <table id="myTable" class="display" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Total Assets</th>
+        <th>Bank Score Ranking</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bank in bank_list %}
+        <tr>
+          <td><a href="{% url 'lending:bank_detail' bank.id %}">{{ bank.name }}</a></td>
+          <td>{{ bank.total_assets|intcomma }}</td>
+          <td>{{ bank.score|floatformat:2 }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <div id="table_div"></div>
   <script type="text/javascript">
 
@@ -40,5 +66,10 @@
   }
 
 
-  </script>
+  </script> -->
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'js/datatable.js' %}"></script>
 {% endblock %}
