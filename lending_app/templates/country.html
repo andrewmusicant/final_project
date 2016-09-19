@@ -14,8 +14,10 @@
 {% block scripts %}
 <script>
 var numOfBanks = {};
+var avgOfBanks = {};
 {% for state in states %}
   numOfBanks['{{ state.name }}']={{ state.number_of_banks }}
+  avgOfBanks['{{ state.name }}']={{ state.average_score|floatformat:2 }}
 {% endfor %}
 console.log(numOfBanks)
 </script>
