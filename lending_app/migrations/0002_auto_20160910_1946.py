@@ -160,6 +160,7 @@ def import_data(apps, schema_editor):
                      family_residential_loans=family_residential_loans,
                      home_equity_loans=home_equity_loans,
                      adjustable_rate_loans_secured_by_family_residential=adjustable_rate_loans_secured_by_family_residential,
+                     total_loans=total_loans,
                      total_num_loans_small=total_num_loans_small,
                      total_num_loans_micro=total_num_loans_micro,
                      total_num_loans_farm=total_num_loans_farm,
