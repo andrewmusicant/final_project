@@ -36,8 +36,7 @@ Bank Detail
 }
 
 .bank-charts {
-  height: 33vh;
-  padding-left: 3%;
+  height: 48vh;
 }
 
 .bank-info-row {
@@ -77,6 +76,7 @@ Typography
 
 .bank-detail h5{
     font-size: 1.3em;
+    padding-bottom: 8%;
 }
 
 /**********************

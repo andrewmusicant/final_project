@@ -49,7 +49,7 @@
                 <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity|floatformat:2 }}</h5>
               </div>
           </div>
-          <div class="bank-chart-col col-1">
+          <div class="bank-chart-col col-1 vcenter">
             <div id="pieChart"></div>
           </div>
           <div class="bank-chart-col col-4"; style="padding-left:4px">
@@ -60,7 +60,7 @@
             <h5> Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
             <h5> Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
          </div>
-          <div class="bank-chart-col col-3">
+          <div class="bank-chart-col col-3 vcenter">
               <h5 id="bartitle">Total Number of Loans Small/Micro/Farm</h5>
               <div id="barchart"; style="padding-left:50px"></div>
           </div>

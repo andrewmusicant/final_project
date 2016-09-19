@@ -140,7 +140,7 @@ def import_data(apps, schema_editor):
             average_equity = row[49]
             average_total_loans = row[50]
             number_domestic_offices = row[51]
-            total_complaints = row[53]
+            total_complaints = row[54]
             score = (individual_loan_percentage + small_loan_percentage +
                      micro_loan_percentage + farm_loan_percentage)
 
