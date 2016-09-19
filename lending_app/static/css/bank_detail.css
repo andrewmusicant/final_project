@@ -82,6 +82,13 @@ Typography
   padding-left: 1%;
 }
 
+
+#scoretitle h6 {
+  text-align: center;
+   font-size: 1.2em;
+  padding: 0%;
+  margin: 0;
+}
 .bank-detail h5{
     font-size: 1.1em;
     padding-top: 5%;
@@ -89,6 +96,14 @@ Typography
     font-family: 'Open Sans', sans-serif;
 }
 
+/**********************
+pie chart
+**********************/
+
+#pieChart {
+  font-size: 1.3em;
+  text-align: center;
+}
 /**********************
 Color
 **********************/

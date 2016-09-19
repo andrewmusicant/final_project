@@ -19,14 +19,14 @@ function drawTable() {
   data.addColumn('string', 'Name');
   data.addColumn('number', 'Total Assets');
   data.addColumn('number', 'Individual Loan Percentage');
-  data.addColumn('number', 'ROE - Future Jar Score');
+  data.addColumn('number', 'Bank Score Ranking');
   data.addRows([
   {% for bank in banks %}
 
           ['<a href="{% url "lending:bank_detail" bank.id %}">{{ bank.name }}</a>',
           {{ bank.total_assets }},
           {{ bank.individual_loan_percentage }},
-          {{ bank.return_on_equity }}],
+          {{ bank.score|floatformat:2 }}],
       {% endfor %}
 ]);
   var table = new google.visualization.Table(document.getElementById('table_div'));
