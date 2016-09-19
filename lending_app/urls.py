@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^bank_detail/(?P<bank_id>[0-9]+)/$', views.bank_detail, name='bank_detail'),
     url(r'^location$', views.location, name='location'),
     url(r'^about$', views.about, name='about'),
+    url(r'^bankcomp$', views.bankVbank, name='comparison'),
 ]
