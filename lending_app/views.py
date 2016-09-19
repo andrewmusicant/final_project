@@ -66,8 +66,10 @@ def country(request):
         request.session['bank_list'] = data
         # RETURNS TO AJAX CALL
         return HttpResponseRedirect(reverse('lending:location'))
-        
-    context = {}
+    state = State.objects.all()
+    context = {
+        'states': state
+    }
     return render(request, 'country.html', context)
 
 

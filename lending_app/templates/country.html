@@ -7,15 +7,19 @@
     <h4>Find banks that help your community</h4>
   </div>
 <div id="tooltip"></div><!-- div to hold tooltip. -->
+<div><svg width="960" height="600" id="statesvg" class="usa-map"></svg></div>
 
-
-<div>
-  <svg width="960" height="600" id="statesvg" class="usa-map"></svg> <!-- svg to hold the map.-->
-</div>
-<script src="../static/js/uStates.js"></script> <!-- creates uStates. -->
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="../static/js/country.js"></script>
 
 {% endblock %}
 {% block scripts %}
+<script>
+var numOfBanks = {};
+{% for state in states %}
+  numOfBanks['{{ state.name }}']={{ state.number_of_banks }}
+{% endfor %}
+console.log(numOfBanks)
+</script>
+<script src="../static/js/uStates.js"></script> <!-- creates uStates. -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="../static/js/country.js"></script>
 {% endblock %}

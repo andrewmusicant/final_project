@@ -12,6 +12,15 @@ Body
 }
 
 /**********************
+About
+**********************/
+
+.info {
+  text-align: center;
+  margin-top: 3%;
+}
+
+/**********************
 Carousel
 **********************/
 
@@ -142,7 +151,7 @@ Navbar
 }
 
 .button1 {
-  margin-left: 90px;
+  margin-left: 50px;
 }
 .button2 {
   margin-left: 0px;
