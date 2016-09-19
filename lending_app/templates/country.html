@@ -19,7 +19,6 @@ var avgOfBanks = {};
   numOfBanks['{{ state.name }}']={{ state.number_of_banks }}
   avgOfBanks['{{ state.name }}']={{ state.average_score|floatformat:2 }}
 {% endfor %}
-console.log(numOfBanks)
 </script>
 <script src="../static/js/uStates.js"></script> <!-- creates uStates. -->
 <script src="https://d3js.org/d3.v3.min.js"></script>
