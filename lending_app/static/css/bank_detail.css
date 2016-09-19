@@ -101,8 +101,12 @@ pie chart
 **********************/
 
 #pieChart {
-  font-size: 1.3em;
+  font-size: 1.1em;
   text-align: center;
+}
+
+#chart {
+  height: 290px;
 }
 /**********************
 Color

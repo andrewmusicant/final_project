@@ -42,7 +42,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="bank-charts">
-          <div class="bank-chart-col col-2 vcenter">
+          <div class="bank-chart-col col-2">
               <div>
                 <h5> Total Liablity: <span class="dollars">{{ bank.total_liability|intcomma }}</span></h5>
                 <h5> Return On Equity: {{ bank.return_on_equity|floatformat:2 }}</h5>
@@ -55,7 +55,7 @@
           <div class="bank-chart-col col-1 vcenter">
             <div id="pieChart">Percentages of Loans for Bank</div>
           </div>
-          <div class="bank-chart-col col-4 vcenter">
+          <div class="bank-chart-col col-4">
             <h5>Number of Residental Real Estate Loans: {{ bank.family_residential_loans|intcomma }}</h5>
             <h5>Home Equity Loans: {{ bank.home_equity_loans|intcomma }}</h5>
             <h5>Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</h5>
@@ -357,7 +357,6 @@ function reset() {
 </script> -->
 <script>
   nv.addGraph(function() {
-    var width = 600, height = 600;
     var chart = nv.models.discreteBarChart()
         .x(function(d) { return d.label })    //Specify the data accessors.
         .y(function(d) { return d.value })
@@ -365,6 +364,7 @@ function reset() {
         .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
         .tooltips(false)        //Don't show tooltips
         .showValues(true)       //...instead, show the bar value right on top of each bar.
+        .color(['#4DD0E1', '#0097A7', '#006064'])
         ;
 
     d3.select('#chart svg')
