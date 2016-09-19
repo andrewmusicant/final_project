@@ -34,10 +34,12 @@ Bank Detail
 
 .bank-large {
   height: 45vh;
+  margin: 1% 1% 1% 1%;
 }
 
 .bank-info {
   height: 45vh;
+  margin: 1% 1% 1% 1%;
 }
 
 .bank-charts {
@@ -45,13 +47,15 @@ Bank Detail
 }
 
 .bank-info-row {
-  height: 25%;
+  height: 23%;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .bank-chart-col {
   float: left;
   position: relative;
-  width: 25%;
+  width: 50%;
   height: 100%;
   padding: 1%;
 }
@@ -76,7 +80,7 @@ Typography
   font-family: 'Open Sans', sans-serif;
 }
 
-.bank-detail p {
+.bank-detail h4 {
   font-size: 2.3em;
   margin: 0;
   padding-left: 1%;
@@ -85,15 +89,16 @@ Typography
 
 #scoretitle h6 {
   text-align: center;
-   font-size: 1.2em;
+  font-size: 1.2em;
   padding: 0%;
   margin: 0;
 }
 .bank-detail h5{
-    font-size: 1.1em;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-size: 1.8em;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /**********************
@@ -113,28 +118,28 @@ Color
 **********************/
 
 .bank-large {
-  background-color: #fff;
+  background-color: #80DEEA;
 }
 
 .row-1 {
-  background-color: #B2EBF2;
+  background-color: #80DEEA;
 }
 
 .row-2 {
-  background-color: #fff;
+  background-color: #80DEEA;
 ;
 }
 
 .row-3 {
-  background-color: #B2EBF2;
+  background-color: #80DEEA;
 }
 
 .row-4 {
-  background-color: #fff;
+  background-color: #80DEEA;
 }
 
 .col-1 {
-  background-color: #fff;
+  background-color: #FFF;
 }
 
 .col-2 {
@@ -142,7 +147,7 @@ Color
 }
 
 .col-3 {
-  background-color: #fff;
+  background-color: #FFF;
 }
 
 .col-4 {
