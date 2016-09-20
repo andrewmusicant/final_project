@@ -32,7 +32,11 @@ Carousel
 }
 
 .carousel-inner .item img {
-  max-height: 70vh;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  line-height: 1;
+  width: 100%;
 }
 
 .carousel-text {
