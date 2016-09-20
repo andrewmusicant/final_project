@@ -14,7 +14,7 @@
 <div class="bank-detail">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-md-6">
         <div class="bank-large">
           <h3>{{ bank.name }}</h3>
           <h1 class="score">Score {{ bank.score|floatformat:2 }}</h1>
@@ -22,7 +22,7 @@
               </div>
           </div>
       </div>
-      <div class="col-xs-6">
+      <div class="col-md-6">
         <div class="bank-info">
           <div class="bank-info-row row-1 vcenter">
             <h4>Total Assets: <span class="dollars">{{ bank.total_assets|intcomma }}</span></h4>
@@ -40,38 +40,44 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-12">
         <div class="bank-charts">
-          <!-- <div class="bank-chart-col col-2">
-              <div>
-                <h5> Total Liablity: <span class="dollars">{{ bank.total_liability|intcomma }}</span></h5>
-                <h5> Return On Equity: {{ bank.return_on_equity|floatformat:2 }}</h5>
-                <h5> Total Deposits: <span class="dollars">{{ bank.total_deposits|intcomma }}</span></h5>
-                <h5> Common Stock: {{ bank.common_stock|intcomma }}</h5>
-                <h5> Return On Assets: {{ bank.return_on_assets|floatformat:2 }}</h5>
-                <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity|floatformat:2 }}</h5>
-              </div>
-          </div> -->
           <div class="bank-chart-col col-1 vcenter">
             <h5>Percentage of Loans for Bank</h5>
             <div id="pieChart"></div>
           </div>
-          <!-- <div class="bank-chart-col col-4">
-            <h5>Number of Residental Real Estate Loans: {{ bank.family_residential_loans|intcomma }}</h5>
-            <h5>Home Equity Loans: {{ bank.home_equity_loans|intcomma }}</h5>
-            <h5>Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</h5>
-            <h5>Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
-            <h5>Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
-            <h5>Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
-         </div> -->
+
           <div class="bank-chart-col col-3 vcenter">
-              <h5>Total Number of Loans</h5>
-              <!--<div id="barchart"; style="padding-left:50px"></div> -->
-              <div id="chart">
-                <svg></svg>
-              </div>
+            <h5>Total Number of Loans</h5>
+            <div id="chart">
+              <svg></svg>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="bank-chart-col col-2">
+            <div>
+              <h5> Total Liablity: <span class="dollars">{{ bank.total_liability|intcomma }}</span></h5>
+              <h5> Return On Equity: {{ bank.return_on_equity|floatformat:2 }}</h5>
+              <h5> Total Deposits: <span class="dollars">{{ bank.total_deposits|intcomma }}</span></h5>
+              <h5> Common Stock: {{ bank.common_stock|intcomma }}</h5>
+              <h5> Return On Assets: {{ bank.return_on_assets|floatformat:2 }}</h5>
+              <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity|floatformat:2 }}</h5>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="bank-chart-col col-4">
+          <h5>Number of Residental Real Estate Loans: {{ bank.family_residential_loans|intcomma }}</h5>
+          <h5>Home Equity Loans: {{ bank.home_equity_loans|intcomma }}</h5>
+          <h5>Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</h5>
+          <h5>Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
+          <h5>Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
+          <h5>Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
+       </div>
       </div>
     </div>
   </div>

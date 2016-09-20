@@ -12,12 +12,12 @@ Reset CSS
   margin-bottom: 0;
 }
 
-.col-xs-6 {
+.col-md-6 {
   padding-left: 0;
   padding-right: 0;
 }
 
-.col-xs-12 {
+.col-md-12 {
   padding-left: 0;
   padding-right: 0;
 }
@@ -48,8 +48,6 @@ Bank Detail
 
 .bank-info-row {
   height: 23%;
-  margin-top: 1%;
-  margin-bottom: 1%;
 }
 
 .bank-chart-col {
@@ -123,19 +121,26 @@ Color
 
 .row-1 {
   background-color: #80DEEA;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .row-2 {
   background-color: #80DEEA;
+  margin-top: 1%;
+  margin-bottom: 1%;
 ;
 }
 
 .row-3 {
   background-color: #80DEEA;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .row-4 {
   background-color: #80DEEA;
+  margin-top: 1%;
 }
 
 .col-1 {
