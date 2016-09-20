@@ -16,9 +16,10 @@ About
 **********************/
 
 .info {
+  margin:3% auto 0;
   text-align: center;
-  margin-top: 3%;
 }
+
 
 /**********************
 Carousel
