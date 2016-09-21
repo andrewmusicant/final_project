@@ -69,6 +69,7 @@ Country Map
 }
 .state:hover{
   fill-opacity:0.5;
+  cursor: pointer;
 }
 #tooltip {
   position: absolute;
@@ -155,6 +156,7 @@ Navbar
 .nav>li>a:hover {
   color:  #CFD8DC;
   background-color:  #00838F;
+  cursor: pointer;
 }
 .search-area {
   margin-top: 0%;
@@ -181,6 +183,12 @@ Navbar
   position: absolute;
   top: -4px;
 }
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: -25px;
+  margin-top: -5px;
+}
+
 /**********************
 Color
 **********************/
