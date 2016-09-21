@@ -1,10 +1,10 @@
 drawChart('chart1', bankData1);
 
-if (bankData2) {
+try {
   drawChart('chart2', bankData2);
+} catch (e) {
+  console.log(e)
 }
-
-
 
 function drawChart(div, bankData) {
   nv.addGraph(function() {

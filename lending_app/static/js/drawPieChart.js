@@ -1,8 +1,11 @@
 drawPieChart('pieChart1', pieData1);
 
-if (pieData2) {
+try {
   drawPieChart('pieChart2', pieData2);
+} catch (e) {
+  console.log(e)
 }
+
 
 function drawPieChart(div, bankData) {
   var pie = new d3pie(div, {
