@@ -72,3 +72,13 @@ class Bank(models.Model):
 
     total_complaints = models.IntegerField(default=0)
     score = models.FloatField()
+
+    @property
+    def score1(self):
+        if self.total_complaints >= 4000:
+             self.score = (self.score * 190 - (self.total_complaints/4500))
+        elif self.total_complaints <= 4000 and self.total_complaints >= 100:
+             self.score = (self.score * 300 - (self.total_complaints/4000))
+        else:
+            self.score = (self.score * 225 - (self.total_complaints/4))
+        return self.score

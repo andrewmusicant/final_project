@@ -32,9 +32,11 @@
     <div class="row">
       <div class="col-md-12">
         <div class="bank-large">
-          <h1>{{ bank.name }}: {{ bank.score }}</h1>
+          <h1 class="score">{{ bank.name }} {{ bank.score1|floatformat:2 }}</h1>
           <hr id="title-rule">
-        </div>
+              <!-- <div id='scoretitle'><h6> Score = # Branches + Micro Loans + Small business lending - Consumer Complaints</h6>
+              </div> -->
+          </div>
       </div>
     </div>
     <div class="row">
@@ -62,6 +64,7 @@
         <div class="pie-chart">
           <h3>Percentage of Loans for Bank</h3>
           <div id="pieChart"></div>
+          <h6>*Any percentage below 3% is not displayed</h6>
         </div>
       </div>
       <div class="col-md-6">
@@ -205,7 +208,7 @@ var pie = new d3pie("pieChart", {
 			"hideWhenLessThanPercentage": 3
 		},
 		"mainLabel": {
-			"fontSize": 11
+			"fontSize": 14
 		},
 		"percentage": {
 			"color": "#ffffff",
