@@ -3,7 +3,7 @@ drawChart('chart1', bankData1);
 try {
   drawChart('chart2', bankData2);
 } catch (e) {
-  console.log(e)
+  console.log(e);
 }
 
 function drawChart(div, bankData) {
@@ -48,6 +48,6 @@ function drawChart(div, bankData) {
           }
         ]
       }
-    ]
+    ];
   }
 }
