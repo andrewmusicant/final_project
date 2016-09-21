@@ -87,6 +87,11 @@ def about(request):
     return render(request, 'about_us.html', context)
 
 
-def bankVbank(request):
-    context = {}
-    return render(request, 'bankVbank.html', context)
+def bank_comparison(request, bank1_id, bank2_id):
+    bank_1 = Bank.objects.get(id=bank1_id)
+    bank_2 = Bank.objects.get(id=bank2_id)
+    context = {
+        'bank_1': bank_1,
+        'bank_2': bank_2
+        }
+    return render(request, 'bank_comparison.html', context)

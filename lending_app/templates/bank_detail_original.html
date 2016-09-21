@@ -14,109 +14,72 @@
 <div class="bank-detail">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="bank-large">
-          <h1>{{ bank.name }}: {{ bank.score }}</h1>
-          <hr id="title-rule">
+          <h3>{{ bank.name }}</h3>
+          <h1 class="score">Score {{ bank.score|floatformat:2 }}</h1>
+              <div id='scoretitle'><h6> Score = # Branches + Micro Loans + Small business lending - Consumer Complaints</h6>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="bank-info">
+          <div class="bank-info-row row-1 vcenter">
+            <h4>Total Assets: <span class="dollars">{{ bank.total_assets|intcomma }}</span></h4>
+          </div>
+          <div class="bank-info-row row-2 vcenter">
+            <h4>Number of Branches: {{ bank.number_domestic_offices|intcomma }}</h4>
+          </div>
+          <div class="bank-info-row row-3 vcenter">
+            <h4>Number of Employees: {{ bank.number_of_employees|intcomma }}</h4>
+          </div>
+          <div class="bank-info-row row-4 vcenter">
+            <h4>Number of Complaints: {{ bank.total_complaints }}</h4>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="bank-info">
-        <div class="col-md-6">
-          <div class="bank-info-row vcenter">
-            <h3>Total Assets: <span class="dollars">{{ bank.total_assets|intcomma }}</span></h3>
+      <div class="col-md-12">
+        <div class="bank-charts">
+          <div class="bank-chart-col col-1 vcenter">
+            <h5>Percentage of Loans for Bank</h5>
+            <div id="pieChart"></div>
           </div>
-          <div class="bank-info-row vcenter">
-            <h3>Number of Branches: {{ bank.number_domestic_offices|intcomma }}</h3>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="bank-info-row vcenter">
-            <h3>Number of Employees: {{ bank.number_of_employees|intcomma }}</h3>
-          </div>
-          <div class="bank-info-row vcenter">
-            <h3>Number of Complaints: {{ bank.total_complaints }}</h3>
+
+          <div class="bank-chart-col col-3 vcenter">
+            <h5>Total Number of Loans</h5>
+            <div id="chart">
+              <svg></svg>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <div class="pie-chart">
-          <h3>Percentage of Loans for Bank</h3>
-          <div id="pieChart"></div>
+        <div class="bank-chart-col col-2">
+            <div>
+              <h5> Total Liablity: <span class="dollars">{{ bank.total_liability|intcomma }}</span></h5>
+              <h5> Return On Equity: {{ bank.return_on_equity|floatformat:2 }}</h5>
+              <h5> Total Deposits: <span class="dollars">{{ bank.total_deposits|intcomma }}</span></h5>
+              <h5> Common Stock: {{ bank.common_stock|intcomma }}</h5>
+              <h5> Return On Assets: {{ bank.return_on_assets|floatformat:2 }}</h5>
+              <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity|floatformat:2 }}</h5>
+            </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="bar-chart">
-          <h3>Total Number of Loans</h3>
-          <div id="chart">
-            <svg></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="bank-data">
-        <div class="col-md-4 col-md-offset-1">
-          <div class="bank-info-col">
-            <h5>Total Liability</h5>
-            <hr>
-            <p><span class="dollars">{{ bank.total_liability|intcomma }}</span></p>
-            <h5>Return on Equity</h5>
-            <hr>
-            <p>{{ bank.return_on_equity|floatformat:2 }}</p>
-            <h5>Total Deposits</h5>
-            <hr>
-            <p><span class="dollars">{{ bank.total_deposits|intcomma }}</span></p>
-            <h5>Common Stock</h5>
-            <hr>
-            <p>{{ bank.common_stock|intcomma }}</p>
-            <h5>Return on Assets</h5>
-            <hr>
-            <p>{{ bank.return_on_assets|floatformat:2 }}</p>
-            <h5>Retained Earnings to Average Equity</h5>
-            <hr>
-            <p>{{ bank.retained_earnings_to_average_equity|floatformat:2 }}</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-md-offset-2">
-          <div class="bank-info-col">
-            <h5>Number of Residental Real Estate Loans</h5>
-            <hr>
-            <p>{{ bank.family_residential_loans|intcomma }}</p>
-
-            <h5>Home Equity Loans</h5>
-            <hr>
-            <p>{{ bank.home_equity_loans|intcomma }}</p>
-
-            <h5>Adjustable Rate Residental Loans</h5>
-            <hr>
-            <p>{{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</p>
-            <h5>Foreclosed Residental Loans</h5>
-            <hr>
-            <p>{{ bank.other_real_estate_owned_family|intcomma }}</p>
-            <h5>Foreclosed Commerical Loans</h5>
-            <hr>
-            <p>{{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</p>
-            <h5>Foreclosed Farm Loans</h5>
-            <hr>
-            <p>{{ bank.other_real_estate_owned_farmland|intcomma }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--
       <div class="col-md-6">
         <div class="bank-chart-col col-4">
-
+          <h5>Number of Residental Real Estate Loans: {{ bank.family_residential_loans|intcomma }}</h5>
+          <h5>Home Equity Loans: {{ bank.home_equity_loans|intcomma }}</h5>
+          <h5>Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</h5>
           <h5>Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
           <h5>Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
           <h5>Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
        </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>
 {% endblock %}
@@ -134,8 +97,8 @@ var pie = new d3pie("pieChart", {
 		"location": "left"
 	},
 	"size": {
-		"canvasWidth": 400,
-    "canvasHeight": 400,
+		"canvasWidth": 350,
+    "canvasHeight": 280,
 		"pieOuterRadius": "90%"
 	},
 	"data": {
