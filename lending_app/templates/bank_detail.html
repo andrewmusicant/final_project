@@ -70,7 +70,7 @@
       <div class="col-md-6">
         <div class="bar-chart">
           <h3>Total Number of Loans</h3>
-          <div id="chart">
+          <div id="chart1">
             <svg></svg>
           </div>
         </div>
@@ -240,49 +240,14 @@ var pie = new d3pie("pieChart", {
 	}
 });
 </script>
+
 <script>
-  nv.addGraph(function() {
-    var chart = nv.models.discreteBarChart()
-        .x(function(d) { return d.label })    //Specify the data accessors.
-        .y(function(d) { return d.value })
-        .showYAxis(false)
-        .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
-        .tooltips(false)        //Don't show tooltips
-        .showValues(true)       //...instead, show the bar value right on top of each bar.
-        .color(['#4DD0E1', '#0097A7', '#006064'])
-        ;
-
-    d3.select('#chart svg')
-        .datum(exampleData())
-        .transition().duration(350)
-        .call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-
-  //Each bar represents a single discrete quantity.
-  function exampleData() {
-   return  [
-      {
-        key: "Cumulative Return",
-        values: [
-          {
-            "label" : "Micro" ,
-            "value" : {{bank.total_num_loans_micro}}
-          } ,
-          {
-            "label" : "Small" ,
-            "value" : {{bank.total_num_loans_small}}
-          } ,
-          {
-            "label" : "Farm" ,
-            "value" : {{bank.total_num_loans_farm}}
-          }
-        ]
-      }
-    ]
+  var bankData1 = {
+    micro: {{bank.total_num_loans_micro}},
+    small: {{bank.total_num_loans_small}},
+    farm: {{bank.total_num_loans_farm}}
   }
 </script>
+<script src="{% static 'js/drawBarChart.js' %}"></script>
+
 {% endblock %}
