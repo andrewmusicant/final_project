@@ -13,14 +13,15 @@
 {% block body %}
 
 <!-- Autocomplete -->
-<h2 class="demoHeaders">Compare Banks</h2>
-<div>
+<div class="pinned-compare">
+  <h3 class="demoHeaders">Compare Banks</h2>
   <form method="post" action="">
     {% csrf_token %}
     <input id="autocomplete" title="type &quot;a&quot;" name="bank-name">
     <button type="submit" class="btn">Compare</button>
   </form>
 </div>
+
 <!-- End Autocomplete -->
 
 <style type="text/css">
@@ -122,16 +123,6 @@
         </div>
       </div>
     </div>
-    <!--
-      <div class="col-md-6">
-        <div class="bank-chart-col col-4">
-
-          <h5>Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
-          <h5>Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
-          <h5>Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
-       </div>
-      </div>
-    </div> -->
   </div>
 </div>
 {% endblock %}
@@ -145,11 +136,14 @@
 <script>
 var availableTags = [
   {% for banks in bank_list %}
-  "{{ banks.name }}",
+  {% autoescape off %}
+      "{{ banks.name }}",
+  {% endautoescape %}
   {% endfor %}
 ];
 $( "#autocomplete" ).autocomplete({
-	source: availableTags
+	source: availableTags,
+  minLength: 5
 });
 
 $( "#menu" ).menu();
