@@ -76,8 +76,16 @@ def country(request):
 def bank_detail(request, bank_id):
     bank_id = int(bank_id)
     bank = Bank.objects.get(id=bank_id)
+
+    if request.POST:
+        name = request.POST['bank-name']
+        bank_2 = Bank.objects.get(name=name)
+        return HttpResponseRedirect(reverse('lending:bank_comparison', kwargs={'bank1_id': bank_id, 'bank2_id': bank_2.id}))
+
+    bank_list = Bank.objects.all()
     context = {
-        'bank': bank
+        'bank': bank,
+        'bank_list': bank_list
     }
     return render(request, 'bank_detail.html', context)
 
