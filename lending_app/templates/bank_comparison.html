@@ -298,51 +298,6 @@ var pie = new d3pie("pieChart1", {
 	}
 });
 </script>
-<script>
-  nv.addGraph(function() {
-    var chart = nv.models.discreteBarChart()
-        .x(function(d) { return d.label })    //Specify the data accessors.
-        .y(function(d) { return d.value })
-        .showYAxis(false)
-        .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
-        .tooltips(false)        //Don't show tooltips
-        .showValues(true)       //...instead, show the bar value right on top of each bar.
-        .color(['#4DD0E1', '#0097A7', '#006064'])
-        ;
-
-    d3.select('#chart1 svg')
-        .datum(exampleData())
-        .transition().duration(350)
-        .call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-
-  //Each bar represents a single discrete quantity.
-  function exampleData() {
-   return  [
-      {
-        key: "Cumulative Return",
-        values: [
-          {
-            "label" : "Micro" ,
-            "value" : {{bank_1.total_num_loans_micro}}
-          } ,
-          {
-            "label" : "Small" ,
-            "value" : {{bank_1.total_num_loans_small}}
-          } ,
-          {
-            "label" : "Farm" ,
-            "value" : {{bank_1.total_num_loans_farm}}
-          }
-        ]
-      }
-    ]
-  }
-</script>
 
 <script>
 var pie = new d3pie("pieChart2", {
@@ -424,10 +379,15 @@ var pie = new d3pie("pieChart2", {
 </script>
 
 <script>
-  var bankData = {
-    micro2: {{bank_2.total_num_loans_micro}},
-    small2: {{bank_2.total_num_loans_small}},
-    farm2: {{bank_2.total_num_loans_farm}}
+  var bankData1 = {
+    micro: {{bank_1.total_num_loans_micro}},
+    small: {{bank_1.total_num_loans_small}},
+    farm: {{bank_1.total_num_loans_farm}}
+  }
+  var bankData2 = {
+    micro: {{bank_2.total_num_loans_micro}},
+    small: {{bank_2.total_num_loans_small}},
+    farm: {{bank_2.total_num_loans_farm}}
   }
 </script>
 <script src="{% static 'js/drawBarChart.js' %}"></script>

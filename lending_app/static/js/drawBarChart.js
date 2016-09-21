@@ -1,7 +1,12 @@
-drawChart('chart2');
+drawChart('chart1', bankData1);
+
+if (bankData2) {
+  drawChart('chart2', bankData2);
+}
 
 
-function drawChart(div) {
+
+function drawChart(div, bankData) {
   nv.addGraph(function() {
     var chart = nv.models.discreteBarChart()
         .x(function(d) { return d.label })    //Specify the data accessors.
@@ -31,15 +36,15 @@ function drawChart(div) {
         values: [
           {
             "label" : "Micro" ,
-            "value" : bankData.micro2
+            "value" : bankData.micro
           } ,
           {
             "label" : "Small" ,
-            "value" : bankData.small2
+            "value" : bankData.small
           } ,
           {
             "label" : "Farm" ,
-            "value" : bankData.farm2
+            "value" : bankData.farm
           }
         ]
       }
