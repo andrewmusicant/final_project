@@ -17,9 +17,13 @@ About
 
 .info {
   margin:3% auto 0;
-  text-align: center;
+  text-align: left;
 }
 
+.headerdata{
+  margin:3% auto 0;
+  text-align: center;
+}
 
 /**********************
 Carousel
