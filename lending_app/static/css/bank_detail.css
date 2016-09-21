@@ -5,146 +5,109 @@ Reset CSS
 .container {
   margin: 0;
   padding: 0;
-  width: auto;
 }
 
 .navbar {
   margin-bottom: 0;
 }
 
-.col-xs-6 {
+.col-md-6 {
   padding-left: 0;
   padding-right: 0;
 }
 
-.col-xs-12 {
+.col-md-12 {
   padding-left: 0;
   padding-right: 0;
 }
 
-h5 {
-  margin-top: 0;
-  margin-bottom: 0;
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
 }
 
-
-/**********************
+/**************
 Bank Detail
-**********************/
+**************/
 
 .bank-large {
-  height: 45vh;
+  text-align: center;
+  margin: 0 10% 0 10%;
 }
 
-.bank-info {
-  height: 45vh;
+hr {
+  border-width: 3px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  border-color: #607D8B;
 }
 
-.bank-charts {
-  height: 48vh;
+#title-rule {
+  border-width: 5px 0;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 0;
 }
+
 
 .bank-info-row {
-  height: 25%;
-}
-
-.bank-chart-col {
-  float: left;
-  position: relative;
-  width: 25%;
-  height: 100%;
-  padding: 1%;
-}
-
-/**********************
-Typography
-**********************/
-
-.bank-detail h1, .bank-detail h3 {
-  text-align: center;
-  padding: 5%;
-  margin: 0;
-}
-
-.bank-detail h1 {
-  font-size: 5em;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.bank-detail h3 {
-  font-size: 3em;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.bank-detail p {
-  font-size: 2.3em;
-  margin: 0;
+  margin: 3% 2.5% 3% 2.5%;
   padding-left: 1%;
+  width: 95%;
+  height: 9vh;
 }
 
+.vcenter {
+  display: flex;
+  align-items: center;
+}
 
-#scoretitle h6 {
+.pie-chart {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-right: thick solid #E0E0E0;
+  height: 50vh;
   text-align: center;
-   font-size: 1.2em;
-  padding: 0%;
-  margin: 0;
-}
-.bank-detail h5{
-    font-size: 1.1em;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    font-family: 'Open Sans', sans-serif;
 }
 
-/**********************
-pie chart
-**********************/
-
-#pieChart {
-  font-size: 1.1em;
+.bar-chart {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-left: medium solid #E0E0E0;
+  height: 50vh;
   text-align: center;
 }
 
 #chart {
-  height: 290px;
+  height: 100%;
 }
-/**********************
+
+.bank-data {
+  margin-top: 5%;
+}
+
+/**************
+Typography
+**************/
+
+h1 {
+  margin-top: 2%;
+}
+
+h5, p {
+  font-size: 1.8em;
+}
+
+p {
+  text-align: right;
+}
+
+/**************
 Color
-**********************/
+**************/
 
-.bank-large {
-  background-color: #fff;
-}
-
-.row-1 {
-  background-color: #B2EBF2;
-}
-
-.row-2 {
-  background-color: #fff;
-;
-}
-
-.row-3 {
-  background-color: #B2EBF2;
-}
-
-.row-4 {
-  background-color: #fff;
-}
-
-.col-1 {
-  background-color: #fff;
-}
-
-.col-2 {
-  background-color: #B2EBF2;
-}
-
-.col-3 {
-  background-color: #fff;
-}
-
-.col-4 {
-  background-color: #B2EBF2;
+.bank-info-row {
+  /*background-color: #E0E0E0;*/
+  background-color: #80DEEA;
 }

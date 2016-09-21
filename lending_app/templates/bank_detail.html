@@ -3,84 +3,170 @@
 {% load humanize %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery-ui.structure.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery-ui.theme.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/nv.d3.css' %}">
 <link rel="stylesheet" href="{% static 'css/bank_detail.css' %}">
 {% endblock %}
 
 {% block body %}
+
+<!-- Autocomplete -->
+<h2 class="demoHeaders">Compare Banks</h2>
+<div>
+  <form method="post" action="">
+    {% csrf_token %}
+    <input id="autocomplete" title="type &quot;a&quot;" name="bank-name">
+    <button type="submit" class="btn">Compare</button>
+  </form>
+</div>
+<!-- End Autocomplete -->
+
 <style type="text/css">
     .dollars:before { content:'$'; }
 </style>
 <div class="bank-detail">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-md-12">
         <div class="bank-large">
-          <h3>{{ bank.name }}</h3>
-          <h1 class="score">Score {{ bank.score1|floatformat:2 }}</h1>
-              <div id='scoretitle'><h6> Score = # Branches + Micro Loans + Small business lending - Consumer Complaints</h6>
-              </div>
+          <h1 class="score">{{ bank.name }} {{ bank.score1|floatformat:2 }}</h1>
+          <hr id="title-rule">
+              <!-- <div id='scoretitle'><h6> Score = # Branches + Micro Loans + Small business lending - Consumer Complaints</h6>
+              </div> -->
           </div>
       </div>
-      <div class="col-xs-6">
-        <div class="bank-info">
-          <div class="bank-info-row row-1 vcenter">
-            <p>Total Assets: <span class="dollars">{{ bank.total_assets|intcomma }}</span></p>
+    </div>
+    <div class="row">
+      <div class="bank-info">
+        <div class="col-md-6">
+          <div class="bank-info-row vcenter">
+            <h3>Total Assets: <span class="dollars">{{ bank.total_assets|intcomma }}</span></h3>
           </div>
-          <div class="bank-info-row row-2 vcenter">
-            <p>Number of Branches: {{ bank.number_domestic_offices|intcomma }}</p>
+          <div class="bank-info-row vcenter">
+            <h3>Number of Branches: {{ bank.number_domestic_offices|intcomma }}</h3>
           </div>
-          <div class="bank-info-row row-3 vcenter">
-            <p>Number of Employees: {{ bank.number_of_employees|intcomma }}</p>
+        </div>
+        <div class="col-md-6">
+          <div class="bank-info-row vcenter">
+            <h3>Number of Employees: {{ bank.number_of_employees|intcomma }}</h3>
           </div>
-          <div class="bank-info-row row-4 vcenter">
-            <p>Number of Complaints: {{ bank.total_complaints }}</p>
+          <div class="bank-info-row vcenter">
+            <h3>Number of Complaints: {{ bank.total_complaints }}</h3>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12">
-        <div class="bank-charts">
-          <div class="bank-chart-col col-2">
-              <div>
-                <h5> Total Liablity: <span class="dollars">{{ bank.total_liability|intcomma }}</span></h5>
-                <h5> Return On Equity: {{ bank.return_on_equity|floatformat:2 }}</h5>
-                <h5> Total Deposits: <span class="dollars">{{ bank.total_deposits|intcomma }}</span></h5>
-                <h5> Common Stock: {{ bank.common_stock|intcomma }}</h5>
-                <h5> Return On Assets: {{ bank.return_on_assets|floatformat:2 }}</h5>
-                <h5> Retained Earnings to Average Equity: {{ bank.retained_earnings_to_average_equity|floatformat:2 }}</h5>
-              </div>
-          </div>
-          <div class="bank-chart-col col-1 vcenter">
-            <div id="pieChart">Percentages of Loans for Bank</div>
-          </div>
-          <div class="bank-chart-col col-4">
-            <h5>Number of Residental Real Estate Loans: {{ bank.family_residential_loans|intcomma }}</h5>
-            <h5>Home Equity Loans: {{ bank.home_equity_loans|intcomma }}</h5>
-            <h5>Adjustable Rate Residental Loans: {{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</h5>
-            <h5>Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
-            <h5>Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
-            <h5>Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
-         </div>
-          <div class="bank-chart-col col-3 vcenter">
-              <h5 id="bartitle">Total Number of Loans Small/Micro/Farm</h5>
-              <!--<div id="barchart"; style="padding-left:50px"></div> -->
-              <div id="chart">
-                <svg></svg>
-              </div>
+      <div class="col-md-6">
+        <div class="pie-chart">
+          <h3>Percentage of Loans for Bank</h3>
+          <div id="pieChart"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="bar-chart">
+          <h3>Total Number of Loans</h3>
+          <div id="chart">
+            <svg></svg>
           </div>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="bank-data">
+        <div class="col-md-4 col-md-offset-1">
+          <div class="bank-info-col">
+            <h5>Total Liability</h5>
+            <hr>
+            <p><span class="dollars">{{ bank.total_liability|intcomma }}</span></p>
+            <h5>Return on Equity</h5>
+            <hr>
+            <p>{{ bank.return_on_equity|floatformat:2 }}</p>
+            <h5>Total Deposits</h5>
+            <hr>
+            <p><span class="dollars">{{ bank.total_deposits|intcomma }}</span></p>
+            <h5>Common Stock</h5>
+            <hr>
+            <p>{{ bank.common_stock|intcomma }}</p>
+            <h5>Return on Assets</h5>
+            <hr>
+            <p>{{ bank.return_on_assets|floatformat:2 }}</p>
+            <h5>Retained Earnings to Average Equity</h5>
+            <hr>
+            <p>{{ bank.retained_earnings_to_average_equity|floatformat:2 }}</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+          <div class="bank-info-col">
+            <h5>Number of Residental Real Estate Loans</h5>
+            <hr>
+            <p>{{ bank.family_residential_loans|intcomma }}</p>
+
+            <h5>Home Equity Loans</h5>
+            <hr>
+            <p>{{ bank.home_equity_loans|intcomma }}</p>
+
+            <h5>Adjustable Rate Residental Loans</h5>
+            <hr>
+            <p>{{ bank.adjustable_rate_loans_secured_by_family_residential|intcomma }}</p>
+            <h5>Foreclosed Residental Loans</h5>
+            <hr>
+            <p>{{ bank.other_real_estate_owned_family|intcomma }}</p>
+            <h5>Foreclosed Commerical Loans</h5>
+            <hr>
+            <p>{{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</p>
+            <h5>Foreclosed Farm Loans</h5>
+            <hr>
+            <p>{{ bank.other_real_estate_owned_farmland|intcomma }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+      <div class="col-md-6">
+        <div class="bank-chart-col col-4">
+
+          <h5>Foreclosed Residental Loans: {{ bank.other_real_estate_owned_family|intcomma }}</h5>
+          <h5>Foreclosed Commerical Loans: {{ bank.other_real_estate_owned_commercial_real_estate|intcomma }}</h5>
+          <h5>Foreclosed Farm Loans: {{ bank.other_real_estate_owned_farmland|intcomma }}</h5>
+       </div>
+      </div>
+    </div> -->
   </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
 <script src="{% static 'js/d3pie.min.js' %}"></script>
 <script src="{% static 'js/nv.d3.js' %}"></script>
+
+<script>
+var availableTags = [
+  {% for banks in bank_list %}
+  "{{ banks.name }}",
+  {% endfor %}
+];
+$( "#autocomplete" ).autocomplete({
+	source: availableTags
+});
+
+$( "#menu" ).menu();
+
+// Hover states on the static widgets
+$( "#dialog-link, #icons li" ).hover(
+	function() {
+		$( this ).addClass( "ui-state-hover" );
+	},
+	function() {
+		$( this ).removeClass( "ui-state-hover" );
+	}
+);
+</script>
+
 <script>
 var pie = new d3pie("pieChart", {
 	"footer": {
@@ -90,8 +176,8 @@ var pie = new d3pie("pieChart", {
 		"location": "left"
 	},
 	"size": {
-		"canvasWidth": 350,
-    "canvasHeight": 280,
+		"canvasWidth": 400,
+    "canvasHeight": 400,
 		"pieOuterRadius": "90%"
 	},
 	"data": {
@@ -159,202 +245,6 @@ var pie = new d3pie("pieChart", {
 	}
 });
 </script>
-
-<!-- <script>var w = 150;
-var h = 180;
-
-var dataset = [
-	{ key: 0, value: {{bank.total_num_loans_small}} },
-	{ key: 1, value: {{bank.total_num_loans_micro}} },
-	{ key: 2, value: {{bank.total_num_loans_farm}} },
-
- ];
-
-var xScale = d3.scale.ordinal()
-				.domain(d3.range(dataset.length))
-				.rangeRoundBands([0, w], 0.05);
-
-var yScale = d3.scale.linear()
-				.domain([0, d3.max(dataset, function(d) {return d.value;})])
-				.range([0, h]);
-
-var key = function(d) {
-	return d.key;
-};
-
-//Create SVG element
-var svg = d3.select("#barchart")
-			.append("svg")
-			.attr("width", w)
-			.attr("height", h);
-
-//Create bars
-svg.selectAll("rect")
-   .data(dataset, key)
-   .enter()
-   .append("rect")
-   .attr("x", function(d, i) {
-		return xScale(i);
-   })
-   .attr("y", function(d) {
-		return h - yScale(d.value);
-   })
-   .attr("width", xScale.rangeBand())
-   .attr("height", function(d) {
-		return yScale(d.value);
-   })
-   .attr("fill", function(d) {
-		return "#00838F";
-   })
-
-	//Tooltip
-	.on("mouseover", function(d) {
-		//Get this bar's x/y values, then augment for the tooltip
-		var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
-		var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
-
-		//Update Tooltip Position & value
-		d3.select("#tooltip")
-			.style("left", xPosition + "px")
-			.style("top", yPosition + "px")
-			.select("#value")
-			.text(d.value);
-		d3.select("#tooltip").classed("hidden", false)
-	})
-	.on("mouseout", function() {
-		//Remove the tooltip
-		d3.select("#tooltip").classed("hidden", true);
-	})	;
-
-//Create labels
-svg.selectAll("text")
-   .data(dataset, key)
-   .enter()
-   .append("text")
-   .text(function(d) {
-		return d.value;
-   })
-   .attr("text-anchor", "middle")
-   .attr("x", function(d, i) {
-		return xScale(i) + xScale.rangeBand() / 2;
-   })
-   .attr("y", function(d) {
-		return h - yScale(d.value) + 14;
-   })
-   .attr("font-family", "sans-serif")
-   .attr("font-size", "11px")
-   .attr("fill", "white");
-
-var sortOrder = false;
-var sortBars = function () {
-    sortOrder = !sortOrder;
-
-    sortItems = function (a, b) {
-        if (sortOrder) {
-            return a.value - b.value;
-        }
-        return b.value - a.value;
-    };
-
-    svg.selectAll("rect")
-        .sort(sortItems)
-        .transition()
-        .delay(function (d, i) {
-        return i * 50;
-    })
-        .duration(1000)
-        .attr("x", function (d, i) {
-        return xScale(i);
-    });
-
-    svg.selectAll('text')
-        .sort(sortItems)
-        .transition()
-        .delay(function (d, i) {
-        return i * 50;
-    })
-        .duration(1000)
-        .text(function (d) {
-        return d.value;
-    })
-        .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
-        return xScale(i) + xScale.rangeBand() / 2;
-    })
-        .attr("y", function (d) {
-        return h - yScale(d.value) + 14;
-    });
-};
-// Add the onclick callback to the button
-d3.select("#sort").on("click", sortBars);
-d3.select("#reset").on("click", reset);
-function randomSort() {
-
-
-	svg.selectAll("rect")
-        .sort(sortItems)
-        .transition()
-        .delay(function (d, i) {
-        return i * 50;
-    })
-        .duration(1000)
-        .attr("x", function (d, i) {
-        return xScale(i);
-    });
-
-    svg.selectAll('text')
-        .sort(sortItems)
-        .transition()
-        .delay(function (d, i) {
-        return i * 50;
-    })
-        .duration(1000)
-        .text(function (d) {
-        return d.value;
-    })
-        .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
-        return xScale(i) + xScale.rangeBand() / 2;
-    })
-        .attr("y", function (d) {
-        return h - yScale(d.value) + 14;
-    });
-}
-function reset() {
-	svg.selectAll("rect")
-		.sort(function(a, b){
-			return a.key - b.key;
-		})
-		.transition()
-        .delay(function (d, i) {
-        return i * 50;
-		})
-        .duration(1000)
-        .attr("x", function (d, i) {
-        return xScale(i);
-		});
-
-	svg.selectAll('text')
-        .sort(function(a, b){
-			return a.key - b.key;
-		})
-        .transition()
-        .delay(function (d, i) {
-        return i * 50;
-    })
-        .duration(1000)
-        .text(function (d) {
-        return d.value;
-    })
-        .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
-        return xScale(i) + xScale.rangeBand() / 2;
-    })
-        .attr("y", function (d) {
-        return h - yScale(d.value) + 14;
-    });
-};
-</script> -->
 <script>
   nv.addGraph(function() {
     var chart = nv.models.discreteBarChart()

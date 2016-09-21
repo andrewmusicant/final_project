@@ -87,12 +87,12 @@ def import_data(apps, schema_editor):
             total_deposits = int(row[8]) * 1000
             common_stock = int(row[9]) * 1000
             derivatives = int(row[10]) * 1000
-            total_securities = row[11]
-            asset_backed_securities = row[12]
-            mortgage_backed_securities = row[13]
-            family_residential_loans = row[14]
-            home_equity_loans = row[15]
-            adjustable_rate_loans_secured_by_family_residential = row[16]
+            total_securities = int(row[11]) * 1000
+            asset_backed_securities = int(row[12]) * 1000
+            mortgage_backed_securities = int(row[13]) * 1000
+            family_residential_loans = int(row[14]) * 1000
+            home_equity_loans = int(row[15]) * 1000
+            adjustable_rate_loans_secured_by_family_residential = int(row[16]) * 1000
             total_loans = int(row[17]) * 1000
             total_amount_individual = int(row[18]) * 1000
             total_amount_micro = int(row[19]) * 1000
@@ -100,7 +100,7 @@ def import_data(apps, schema_editor):
 
             total_num_loans_micro = row[20]
             total_num_loans_small = row[22]
-            total_amount_farm = row[23]
+            total_amount_farm = int(row[23]) * 1000
             total_num_loans_farm = row[24]
 
             if int(total_loans) == 0:
