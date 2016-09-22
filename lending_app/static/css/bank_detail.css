@@ -64,27 +64,22 @@ hr {
 }
 
 .pie-chart {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  border-right: thick solid #E0E0E0;
-  height: 50vh;
+  padding-top: 3%;
+  padding-bottom: 0;
+  border-right: medium solid #E0E0E0;
+  height: 65vh;
   text-align: center;
 }
 
 .bar-chart {
   margin-top: 2%;
   margin-bottom: 2%;
-  border-left: medium solid #E0E0E0;
   height: 50vh;
   text-align: center;
 }
 
 #chart1 {
   height: 100%;
-}
-
-.bank-data {
-  margin-top: 5%;
 }
 
 .pinned-compare {
@@ -97,6 +92,16 @@ hr {
   z-index: 5;
 }
 
+.bank-info-col {
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 0;
+}
+
+.col-border {
+  border-right: medium solid #E0E0E0;
+}
+
 /**************
 Typography
 **************/
@@ -107,6 +112,7 @@ h1 {
 
 h5, p {
   font-size: 1.8em;
+  text-align: left;
 }
 
 p {
@@ -118,7 +124,6 @@ Color
 **************/
 
 .bank-info-row {
-  /*background-color: #E0E0E0;*/
   background-color: #80DEEA;
 }
 
