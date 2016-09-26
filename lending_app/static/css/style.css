@@ -140,11 +140,12 @@ Typography
 }
 
 .title-text > h1 {
-  padding-bottom: 0;
+  font-size: 50px;
+  padding-bottom: -10px;
   margin-bottom: 0;
 }
 
-.title-text > h4 {
+.title-text > h2 {
   padding-top: 0;
   margin-top: 0;
   margin-bottom: 1em;
@@ -172,6 +173,11 @@ body {
 /**********************
 Navbar
 **********************/
+
+.navbar {
+  font-size: 28px;
+  padding-top: 6px;
+}
 
 .nav>li>a:hover {
   color:  #CFD8DC;
@@ -206,7 +212,7 @@ Navbar
 
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
   margin-left: -25px;
-  margin-top: -5px;
+  margin-top: 0px;
 }
 
 /**********************
