@@ -108,7 +108,7 @@ Country Map
   margin:0;
 }
 #tooltip tr td:nth-child(1){
-  width:50px;
+  width:60px;
 }
 #tooltip tr td:nth-child(2){
   text-align:center;
@@ -117,6 +117,18 @@ Country Map
 .usa-map {
   display: block;
   margin: auto;
+}
+
+
+#key {
+  margin: 2em;
+  overflow: visible;
+  height: 30px;
+}
+
+.right-key {
+  padding-right: 20%;
+  text-align: right;
 }
 
 /**********************

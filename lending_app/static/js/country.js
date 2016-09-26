@@ -1,7 +1,7 @@
 function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
   return "<h4>"+n+"</h4><table>"+
     "<tr><td>Banks:</td><td>"+ numOfBanks[n] +"</td></tr>"+
-    "<tr><td>Average:</td><td>"+avgOfBanks[n]+"</td></tr>"+
+    "<tr><td>Avg Score:</td><td>"+avgOfBanks[n]+"</td></tr>"+
     "</table>";
 }
 
@@ -12,9 +12,9 @@ var sampleData ={};	/* Sample random data. */
 "Colorado", "New Mexico", "Oregon", "North Dakota", "South Dakota", "Nebraska", "Iowa", "Mississippi", "Indiana", "Illinois", "Minnesota",
 "Wisconsin", "Missouri", "Arkansas", "Oklahoma", "Kansas", "Louisiana", "Virginia"]
   .forEach(function(state){
-    var low=numOfBanks[state];
-    sampleData[state]={low:d3.min([low]), high:d3.max([low]),
-        avg:Math.round((low)/1), color:d3.interpolate("#E0F7FA", "#006064")(low/225)};
+    var nob=numOfBanks[state];
+    sampleData[state]={ color:d3.interpolate("#E0F7FA", "#006064")(nob/300) };
+
   });
 
 /* draw states on id #statesvg */
