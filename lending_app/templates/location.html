@@ -21,7 +21,7 @@
         <tr>
           <td><a href="{% url 'lending:bank_detail' bank.id %}">{{ bank.name }}</a></td>
           <td>{{ bank.total_assets|intcomma }}</td>
-          <td>{{ bank.score|floatformat:2 }}</td>
+          <td>{% widthratio bank.score|floatformat:2 1 100 %}%</td>
         </tr>
       {% endfor %}
     </tbody>

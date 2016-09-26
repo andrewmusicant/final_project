@@ -138,13 +138,17 @@ Typography
   margin-bottom: 1em;
 }
 
-body {
+/*body {
   font-family: 'Open Sans', sans-serif;
-}
+}*/
 
-h1, h2, h3, h4, h5, h6 {
+body {
   font-family: 'Josefin Sans', sans-serif;
 }
+
+/*h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif;
+}*/
 
 .vcenter {
   display: flex;
