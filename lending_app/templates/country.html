@@ -21,7 +21,7 @@ var numOfBanks = {};
 var avgOfBanks = {};
 {% for state in states %}
   numOfBanks['{{ state.name }}']={{ state.number_of_banks }}
-  avgOfBanks['{{ state.name }}']='{% widthratio bank.score|floatformat:2 1 100 %}%'
+  avgOfBanks['{{ state.name }}']={% widthratio state.average_score|floatformat:2 1 100 %}
 {% endfor %}
 </script>
 <script src="../static/js/uStates.js"></script> <!-- creates uStates. -->

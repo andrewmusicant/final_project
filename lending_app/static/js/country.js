@@ -1,7 +1,7 @@
 function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
   return "<h4>"+n+"</h4><table>"+
     "<tr><td>Banks:</td><td>"+ numOfBanks[n] +"</td></tr>"+
-    "<tr><td>Avg Score:</td><td>"+avgOfBanks[n]+"</td></tr>"+
+    "<tr><td>Avg Score:</td><td>"+avgOfBanks[n]+"%</td></tr>"+
     "</table>";
 }
 
