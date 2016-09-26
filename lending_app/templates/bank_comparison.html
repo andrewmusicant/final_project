@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="bank-large">
-            <h1>{{ bank_1.name }}: {{ bank_1.score }}</h1>
+            <h1>{{ bank_1.name }}: &nbsp{% widthratio bank_1.score|floatformat:2 1 100 %}%</h1>
             <hr id="title-rule">
           </div>
         </div>
@@ -121,7 +121,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="bank-large">
-            <h1>{{ bank_2.name }}: {{ bank_2.score }}</h1>
+            <h1>{{ bank_2.name }}: &nbsp{% widthratio bank_2.score|floatformat:2 1 100 %}%</h1>
             <hr id="title-rule">
           </div>
         </div>
