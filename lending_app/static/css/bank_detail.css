@@ -83,10 +83,10 @@ hr {
 }
 
 .pinned-compare {
-  position: fixed;
+  position: absolute;
   background-color: #E0E0E0;
-  top: 7%;
-  /*width: 100%;*/
+  top: 6.65%;
+  width: auto;
   right: 0;
   padding: 1% 2px 1% 2px;
   z-index: 5;

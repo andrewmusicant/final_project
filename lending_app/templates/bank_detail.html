@@ -14,7 +14,7 @@
 
 <!-- Autocomplete -->
 <div class="pinned-compare">
-  <h3 class="demoHeaders">Compare Banks</h2>
+  <h3 class="demoHeaders">Compare to bank</h2>
   <form method="post" action="">
     {% csrf_token %}
     <input id="autocomplete" title="type &quot;a&quot;" name="bank-name">
@@ -30,7 +30,7 @@
 <div class="bank-detail">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8 col-md-offset-2">
         <div class="bank-large">
           <h1 class="score">{{ bank.name }} {{ bank.score1|floatformat:2 }}</h1>
           <hr id="title-rule">
