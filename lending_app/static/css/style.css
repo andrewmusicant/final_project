@@ -58,6 +58,7 @@ State Table
 }*/
 
 .datatable {
+  font-size: 1.5em;
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -121,7 +122,8 @@ Country Map
 
 
 #key {
-  margin: 2em;
+  /*margin: 2em;*/
+  margin-right: 12%;
   overflow: visible;
   height: 30px;
 }
@@ -129,6 +131,10 @@ Country Map
 .right-key {
   padding-right: 20%;
   text-align: right;
+}
+
+.legend {
+  padding-right: 18.5%;
 }
 
 
